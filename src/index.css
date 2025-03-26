@@ -3,3 +3,12 @@
 .bg-dark {
     background-color: #242424;
 }
+
+.container {
+    flex: 1;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}

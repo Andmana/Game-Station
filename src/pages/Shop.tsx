@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const dummy = [
     { id: 0, name: "bag" },
     { id: 1, name: "shirt" },
@@ -5,7 +7,10 @@ const dummy = [
 ];
 const Shop = () => {
     return (
-        <div>
+        <div className="container flex flex-col">
+            <div>
+                <Link to="/">Back</Link>
+            </div>
             <ul>
                 {dummy.map((item) => (
                     <li key={item.id}>{item.name}</li>

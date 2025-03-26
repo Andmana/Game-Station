@@ -1,5 +1,5 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
-import Homepage from "./pages/Homepage.tsx";
 
 function App() {
     return (
@@ -9,7 +9,7 @@ function App() {
         >
             <Navbar />
             <main className="flex-1 flex">
-                <Homepage />
+                <Outlet />
             </main>
         </div>
     );
