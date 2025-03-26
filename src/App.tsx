@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar.tsx";
+import Homepage from "./pages/Homepage.tsx";
 
 function App() {
     return (
@@ -7,7 +8,9 @@ function App() {
             className="bg-dark relative min-h-screen text-white flex flex-col"
         >
             <Navbar />
-            <main></main>
+            <main className="flex-1 flex">
+                <Homepage />
+            </main>
         </div>
     );
 }
