@@ -35,12 +35,12 @@ const Navbar = () => {
 
     return (
         <motion.div
-            className="fixed w-full nav-container"
+            className="relative w-full nav-container z-10"
             initial={{ y: 0 }}
             animate={{ y: scrollingDown ? -80 : 0 }} // Hide navbar when scrolling down
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-            <nav className="main-padding flex justify-between items-center gap-2.5">
+            <nav className="main-padding fixed w-full flex justify-between items-center gap-2.5">
                 <NavigationLink to={"/"}>
                     <img
                         src={logoImg}
