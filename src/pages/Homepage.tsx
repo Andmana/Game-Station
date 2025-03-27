@@ -15,7 +15,33 @@ const HomepageSection1 = () => {
                 ></video>
             </div>
 
-            <div className="flex-1 main-padding flex flex-col justify-center items-start z-10">
+            <div className="flex-1 main-padding flex flex-wrap justify-between md:justify-center items-center z-10">
+                <div>
+                    <div className="bg-[#2424247a] p-5 rounded-2xl text-center mb-7">
+                        <h1 className="text-4xl font-black mb-4">
+                            GAME STATION
+                        </h1>
+                        <p className="max-w-[400px] w-auto">
+                            This isn't a real online game shop. You can't buy
+                            any games here. <br></br> <br></br>
+                            Enjoy!
+                        </p>
+                    </div>
+                    <div className="flex justify-around bg-[#2424247a] py-1 rounded-2xl text-center">
+                        <a
+                            className="flex justify-center px-7 py-2 bg-[#00000075] rounded-xl"
+                            href="github.com/andmana"
+                        >
+                            Repo
+                        </a>
+                        <a
+                            className="flex justify-center px-7 py-2 bg-[#00000075] rounded-xl"
+                            href="github.com/andmana"
+                        >
+                            API
+                        </a>
+                    </div>
+                </div>
                 <div
                     id="quick-navigation"
                     className="bg-[#2424247a] p-5 rounded-2xl"
@@ -24,10 +50,10 @@ const HomepageSection1 = () => {
                         Quick Navigation
                     </h1>
 
-                    <ul className="flex flex-col gap-2.5 justify-center items-stretch">
+                    <ul className="self-start flex flex-col gap-2.5 justify-center">
                         <li>
                             <Link
-                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                className="flex justify-center py-1.5 bg-[#00000075] rounded-xl"
                                 to="/shop"
                             >
                                 Go to Shop
@@ -35,7 +61,7 @@ const HomepageSection1 = () => {
                         </li>
                         <li>
                             <Link
-                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                className="flex justify-center py-1.5 bg-[#00000075] rounded-xl"
                                 to="/shop"
                             >
                                 Go to Shop
@@ -43,7 +69,7 @@ const HomepageSection1 = () => {
                         </li>
                         <li>
                             <Link
-                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                className="flex justify-center py-1.5 bg-[#00000075] rounded-xl"
                                 to="/shop"
                             >
                                 Go to Shop
@@ -51,7 +77,7 @@ const HomepageSection1 = () => {
                         </li>
                         <li>
                             <Link
-                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                className="flex justify-center py-1.5 bg-[#00000075] rounded-xl"
                                 to="/shop"
                             >
                                 Go to Shop
@@ -59,24 +85,13 @@ const HomepageSection1 = () => {
                         </li>
                         <li>
                             <Link
-                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                className="flex justify-center py-1.5 bg-[#00000075] rounded-xl"
                                 to="/shop"
                             >
                                 Go to Shop
                             </Link>
                         </li>
                     </ul>
-                </div>
-                <div>
-                    <h1>Game Station</h1>
-                    <p>
-                        This isn't a real online game shop. You can't buy any
-                        games here. Enjoy!
-                    </p>
-                    <div>
-                        <a href="github.com/andmana">Repo</a>
-                        <a href="github.com/andmana">API</a>
-                    </div>
                 </div>
             </div>
         </section>
