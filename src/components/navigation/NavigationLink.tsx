@@ -10,10 +10,11 @@ interface NavigationLinkProps {
 const NavigationLink = ({ to, children }: NavigationLinkProps) => {
     return (
         <motion.div
+            className="py-2"
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 300 }}
         >
-            <Link to={to} className="flex items-center justify gap-1.5">
+            <Link to={to} className="flex items-center justify-center gap-1.5">
                 {children}
             </Link>
         </motion.div>
