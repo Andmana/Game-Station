@@ -10,6 +10,7 @@ const Shop = () => {
         <div className="container flex flex-col">
             <div>
                 <Link to="/">Back</Link>
+                <h1>HAHAHAHAH</h1>
             </div>
             <ul>
                 {dummy.map((item) => (

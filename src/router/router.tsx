@@ -1,9 +1,9 @@
 // router.jsx
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Homepage from "../pages/Homepage";
 import Shop from "../pages/Shop";
 import ErrorPage from "../pages/ErrorPage";
+import Homepage from "../pages/homepage/Homepage";
 
 const router = createBrowserRouter([
     {

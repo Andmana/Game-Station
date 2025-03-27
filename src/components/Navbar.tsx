@@ -39,7 +39,10 @@ const Navbar = () => {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
             <div className="nav-container main-padding flex justify-between items-center p-4 ">
-                <Link to="/" className="flex-1/4 flex items-center gap-1.5">
+                <Link
+                    to="/"
+                    className="flex-1/4 flex items-center justify gap-1.5"
+                >
                     <span
                         className="w-10 h-10 bg-cover bg-center bg-no-repeat "
                         style={{ backgroundImage: `url(${logoImg})` }}

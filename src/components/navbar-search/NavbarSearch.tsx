@@ -3,15 +3,21 @@ import { motion } from "framer-motion";
 
 import iconSearch from "../../assets/images/icon-search.svg";
 
-const NavbarSearch = () => {
+interface NavbarSearchProp {
+    classProp?: string;
+}
+
+const NavbarSearch = ({ classProp }: NavbarSearchProp) => {
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-        <div className="flex-2/4 relative flex items-center justify-center">
+        <div
+            className={`${classProp} flex-1 max-w-[500px] relative flex items-center justify-center`}
+        >
             <motion.div
-                className="relative flex items-center  max-w-[400px] w-full"
-                initial={{ width: "180px" }}
-                animate={{ width: isFocused ? "100%" : "180px" }}
+                className="relative flex items-center  w-full"
+                initial={{ width: "200px" }}
+                animate={{ width: isFocused ? "90%" : "200px" }}
                 transition={{
                     duration: 0.15,
                     type: "spring",
