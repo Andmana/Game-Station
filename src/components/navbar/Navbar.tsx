@@ -12,16 +12,18 @@ const Navbar = () => {
         <motion.div className="fixed w-full">
             <nav className="main-padding flex justify-between items-center gap-2.5">
                 <NavigationLink to={"/"}>
-                    <span
-                        className="w-10 h-10 bg-cover bg-center bg-no-repeat "
-                        style={{ backgroundImage: `url(${logoImg})` }}
-                    ></span>
+                    <img
+                        src={logoImg}
+                        className="w-8 h-8"
+                        aria-hidden="true"
+                        alt=""
+                    />
                     <span className="text-xl md:text-2xl font-bold w-0 h-0 sm:h-fit sm:w-fit overflow-hidden">
                         GAME STATION
                     </span>
                 </NavigationLink>
 
-                <NavbarSearch />
+                <NavbarSearch classProp="flex-1 max-w-[500px]" />
 
                 <ButtonWrapper>
                     <img

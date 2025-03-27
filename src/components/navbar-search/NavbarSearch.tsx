@@ -12,12 +12,14 @@ const NavbarSearch = ({ classProp }: NavbarSearchProp) => {
 
     return (
         <div
-            className={`${classProp} flex-1 max-w-[500px] relative flex items-center justify-center`}
+            className={`${classProp} relative flex items-center justify-center`}
         >
             <motion.div
                 className="relative flex items-center  w-full"
                 initial={{ width: "200px" }}
-                animate={{ width: isFocused ? "90%" : "200px" }}
+                animate={{
+                    width: isFocused ? "clamp(200px, 90%, 500px)" : "200px",
+                }}
                 transition={{
                     duration: 0.15,
                     type: "spring",

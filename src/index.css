@@ -30,7 +30,7 @@ h3 {
 }
 
 .main-padding {
-    padding: 1rem 2.5rem;
+    padding: 1.5rem 2.5rem 1rem;
 }
 
 @media (min-width: 601) and (max-width: 900px) {
