@@ -8,9 +8,7 @@ function App() {
             className="bg-dark relative min-h-screen text-white flex flex-col"
         >
             <Navbar />
-            <main className="flex-1 flex">
-                <Outlet />
-            </main>
+            <Outlet />
         </div>
     );
 }

@@ -1,5 +1,11 @@
+import ContentFirst from "../../components/contents/ContetFirst";
+
 const Homepage = () => {
-    return <div></div>;
+    return (
+        <main>
+            <ContentFirst />
+        </main>
+    );
 };
 
 export default Homepage;
