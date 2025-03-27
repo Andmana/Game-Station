@@ -1,9 +1,72 @@
 import { Link } from "react-router-dom";
+import backgroundVideo from "../assets/videos/background-video.mp4";
 
-const Homepage = () => {
+const HomepageSection1 = () => {
     return (
-        <div className="flex-1 flex flex-col ">
-            <section className="h-screen flex items-center justify-around w-full">
+        <section className="h-screen w-full relative flex items-stretch justify-center ">
+            <div className="h-full w-[125%] absolute top-0 left-0 z-0 transform translate-x-[-20%]">
+                <video
+                    className="absoulute w-full h-full object-top object-cover"
+                    src={backgroundVideo}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></video>
+            </div>
+
+            <div className="flex-1 main-padding flex flex-col justify-center items-start z-10">
+                <div
+                    id="quick-navigation"
+                    className="bg-[#2424247a] p-5 rounded-2xl"
+                >
+                    <h1 className="text-2xl font-bold mb-3.5 ">
+                        Quick Navigation
+                    </h1>
+
+                    <ul className="flex flex-col gap-2.5 justify-center items-stretch">
+                        <li>
+                            <Link
+                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                to="/shop"
+                            >
+                                Go to Shop
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                to="/shop"
+                            >
+                                Go to Shop
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                to="/shop"
+                            >
+                                Go to Shop
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                to="/shop"
+                            >
+                                Go to Shop
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className="flex justify-center py-1.5 bg-[#000000] rounded-xl"
+                                to="/shop"
+                            >
+                                Go to Shop
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
                 <div>
                     <h1>Game Station</h1>
                     <p>
@@ -15,26 +78,15 @@ const Homepage = () => {
                         <a href="github.com/andmana">API</a>
                     </div>
                 </div>
-                <div id="quick-navigation">
-                    <ul>
-                        <li>
-                            <Link to="/shop">Go to Shop</Link>
-                        </li>
-                        <li>
-                            <Link to="/shop">Go to Shop</Link>
-                        </li>
-                        <li>
-                            <Link to="/shop">Go to Shop</Link>
-                        </li>
-                        <li>
-                            <Link to="/shop">Go to Shop</Link>
-                        </li>
-                        <li>
-                            <Link to="/shop">Go to Shop</Link>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+            </div>
+        </section>
+    );
+};
+
+const Homepage = () => {
+    return (
+        <div className="flex-1 flex flex-col ">
+            <HomepageSection1 />
             <section className="h-screen flex justify-center items-center relative">
                 <div>
                     <h2 className="text-4xl absolute top-5 self-center transform -translate-x-1/2">
