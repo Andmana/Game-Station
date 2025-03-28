@@ -9,11 +9,11 @@ const QuickNavigation = () => {
 
     return (
         <motion.div
-            className="h-screen flex justify-start items-center"
+            className="absolute z-20 h-screen flex justify-start items-center"
             initial={false}
             animate={isOpen ? "open" : "closed"}
         >
-            <div className="relative mt-10 flex items-center main-padding">
+            <div className="relative mb-10 md:mt-10 md:mb-0 flex items-center main-padding">
                 <MenuToggle
                     toggleOpen={() => toggleOpen(!isOpen)}
                     isOpen={isOpen}
