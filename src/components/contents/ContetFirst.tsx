@@ -2,9 +2,18 @@ import SectionWrapper from "./SectionWrapper";
 import backgroundVideo from "../../assets/videos/background-video.mp4";
 import QuickNavigation from "../quick-navigation/QuickNavigation";
 
-import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
+import {
+    useMotionValue,
+    useSpring,
+    useTransform,
+    motion,
+    useCycle,
+} from "framer-motion";
 
 const ContentFirst = () => {
+    const [isOpen, toggleOpen] = useCycle(false, true);
+    console.log(isOpen);
+
     return (
         <SectionWrapper>
             <section className="h-screen w-full relative flex items-center justify-start">
@@ -18,14 +27,18 @@ const ContentFirst = () => {
                         playsInline
                     ></video>
                 </div>
-                <QuickNavigation />
-                <TiltCard />
+                <QuickNavigation isOpen={isOpen} toggleOpen={toggleOpen} />
+                <TiltCard isOpen={isOpen} />
             </section>
         </SectionWrapper>
     );
 };
 
-const TiltCard = () => {
+interface TiltCardProps {
+    isOpen: boolean;
+}
+
+const TiltCard = ({ isOpen }: TiltCardProps) => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -71,6 +84,9 @@ const TiltCard = () => {
                 className="bg-[#00000066] mt-7"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isOpen ? 0 : 1 }}
+                transition={{ duration: 0.2 }}
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             >
                 <div

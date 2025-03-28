@@ -34,7 +34,7 @@ interface MenuItemsProps {
 const MenuItems = ({ isOpen }: MenuItemsProps) => {
     return (
         <motion.ul
-            className="z-20 flex ms-5 md:ms-0 flex-col justify-center items-stretch gap-4 md:gap-12 text-black origin-left"
+            className="z-20 flex ms-6 md:ms-0 flex-col justify-center items-stretch gap-4 md:gap-12 origin-left"
             variants={{
                 open: {
                     transition: {

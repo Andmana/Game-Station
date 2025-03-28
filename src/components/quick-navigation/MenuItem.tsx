@@ -10,7 +10,7 @@ const MenuItem = ({ item, variants }: MenuItemProp) => {
     return (
         <motion.li
             variants={variants}
-            className={`w-[220px] bg-[#ffffff80] transform ${item.customClass}`}
+            className={`w-[220px] bg-[#0000007d] transform ${item.customClass} border-b-2 border-white`}
         >
             <NavigationLink to={item.to}>{item.label}</NavigationLink>
         </motion.li>

@@ -4,11 +4,12 @@ import iconClose from "../../assets/images/icon-close.svg";
 import iconOpen from "../../assets/images/icon-open.svg";
 
 interface MenuToggleProps {
-    toggleOpen: () => void;
     isOpen: boolean;
+    toggleOpen: () => void;
 }
 
-const MenuToggle = ({ toggleOpen, isOpen }: MenuToggleProps) => {
+const MenuToggle = ({ isOpen, toggleOpen }: MenuToggleProps) => {
+    console.log("isOpen", isOpen);
     return (
         <div className={`relative z-20 ${isOpen ? "" : "gelatine"}`}>
             {isOpen ? (
