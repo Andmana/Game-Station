@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 import iconClose from "../../assets/images/icon-close.svg";
 import { useState } from "react";
 
+const menuItems = [
+    { to: "/", label: "Random Game", customClass: "-translate-x-[20px]" },
+    { to: "/", label: "Go to Shop", customClass: "ms-[60px]" },
+    { to: "/", label: "All Time Top", customClass: "ms-[100px]" },
+    { to: "/", label: "Best of the Year", customClass: "ms-[60px]" },
+    { to: "/", label: "Last 30 Days", customClass: "-translate-x-[20px]" },
+];
+
 const QuickNavigation = () => {
     const [showNav, setShowNav] = useState(false);
     return (
@@ -31,29 +39,24 @@ const QuickNavigation = () => {
                     }
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     className="w-full z-20 flex  flex-col justify-center items-stretch gap-12 text-black origin-left"
-                    variants={{
-                        hidden: { opacity: 0 },
-                        show: {
-                            opacity: 1,
-                            transition: { staggerChildren: 0.4 },
-                        }, // Stagger children animation
-                    }}
                 >
-                    <li className="w-[250px] bg-[#ffffff] transform -translate-x-[20px] ">
-                        <NavigationLink to="/">Random Game</NavigationLink>
-                    </li>
-                    <li className="w-[250px] bg-[#ffffff] ms-[60px]">
-                        <NavigationLink to="/">Go to Shop</NavigationLink>
-                    </li>
-                    <li className="w-[250px] bg-[#ffffff] ms-[100px]">
-                        <NavigationLink to="/">All Time Top</NavigationLink>
-                    </li>
-                    <li className="w-[250px] bg-[#ffffff] ms-[60px]">
-                        <NavigationLink to="/">Best of the Year</NavigationLink>
-                    </li>
-                    <li className="w-[250px] bg-[#ffffff]">
-                        <NavigationLink to="/">Last 30 Days</NavigationLink>
-                    </li>
+                    {menuItems.map((item, index) => (
+                        <motion.li
+                            key={index}
+                            className={`w-[250px] bg-[#ffffff80] transform ${item.customClass}`}
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={
+                                showNav
+                                    ? { scale: 1, opacity: 1, y: 0 }
+                                    : { scale: 0, opacity: 0, y: -20 }
+                            }
+                            transition={{ delay: index * 0.2, duration: 0.5 }}
+                        >
+                            <NavigationLink to={item.to}>
+                                {item.label}
+                            </NavigationLink>
+                        </motion.li>
+                    ))}
                 </motion.ul>
             </div>
         </div>
