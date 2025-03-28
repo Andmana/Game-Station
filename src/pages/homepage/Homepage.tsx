@@ -1,4 +1,5 @@
 import ContentSecond from "../../components/contents/ContentSecond";
+import ContentThird from "../../components/contents/ContentThird";
 import ContentFirst from "../../components/contents/ContetFirst";
 
 const Homepage = () => {
@@ -6,6 +7,7 @@ const Homepage = () => {
         <main>
             <ContentFirst />
             <ContentSecond />
+            <ContentThird />
         </main>
     );
 };
