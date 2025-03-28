@@ -79,14 +79,25 @@ const TiltCard = ({ isOpen }: TiltCardProps) => {
     };
 
     return (
-        <div className="transform-3d absolute z-10 w-full h-full main-padding flex justify-center items-end md:justify-end md:items-center">
+        <motion.div
+            className="transform-3d absolute z-10 w-full h-full main-padding flex justify-center items-end md:justify-end md:items-center"
+            initial={{ opacity: 0, translateY: "100%" }}
+            animate={
+                isOpen
+                    ? { opacity: 0, translateY: "100%" }
+                    : { opacity: 1, translateY: 0 }
+            }
+            transition={{
+                duration: 0.4,
+                type: "spring",
+                damping: 20,
+                stiffness: 300,
+            }}
+        >
             <motion.div
                 className="bg-[#00000066] mt-7"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isOpen ? 0 : 1 }}
-                transition={{ duration: 0.2 }}
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             >
                 <div
@@ -118,7 +129,7 @@ const TiltCard = ({ isOpen }: TiltCardProps) => {
                     </div>
                 </div>
             </motion.div>
-        </div>
+        </motion.div>
     );
 };
 

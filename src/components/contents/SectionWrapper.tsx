@@ -7,7 +7,7 @@ interface SectionWrapperProps {
 
 const SectionWrapper = ({ children }: SectionWrapperProps) => {
     return (
-        <motion.div className="h-screen w-full relative flex items-stretch justify-center">
+        <motion.div className="h-screen w-full relative flex items-stretch justify-center overflow-hidden">
             {children}
         </motion.div>
     );
