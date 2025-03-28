@@ -14,7 +14,10 @@ const NavigationLink = ({ to, children }: NavigationLinkProps) => {
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 300 }}
         >
-            <Link to={to} className="flex items-center justify-center gap-1.5">
+            <Link
+                to={to}
+                className="flex items-center justify-center gap-1.5 font-semibold"
+            >
                 {children}
             </Link>
         </motion.div>
