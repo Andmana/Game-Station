@@ -1,4 +1,3 @@
-import { useCycle } from "framer-motion";
 import { motion } from "framer-motion";
 import MenuToggle from "./MenuToggle";
 import MenuItems from "./MenuItems";

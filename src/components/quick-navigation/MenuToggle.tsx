@@ -19,6 +19,7 @@ const MenuToggle = ({ toggleOpen, isOpen }: MenuToggleProps) => {
                         whileHover={{ rotate: "360deg" }} // Rotate effect on hover
                         whileTap={{ rotate: "-360deg" }} // Rotate effect on tap (click)
                         transition={{ duration: 0.4 }}
+                        exit={{ opacity: 0 }}
                     />
                 </ButtonWrapper>
             ) : (
@@ -28,6 +29,7 @@ const MenuToggle = ({ toggleOpen, isOpen }: MenuToggleProps) => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.2 }}
+                        exit={{ opacity: 0 }}
                     >
                         <img src={iconOpen} className="w-8 h-8 " />
                         <span className="absolute right-0 transform rotate-[90deg] translate-x-[100%]">
