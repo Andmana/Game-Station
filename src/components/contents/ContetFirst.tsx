@@ -81,10 +81,10 @@ const TiltCard = ({ isOpen }: TiltCardProps) => {
     return (
         <motion.div
             className="transform-3d absolute z-10 w-full h-full main-padding flex justify-center items-end md:justify-end md:items-center"
-            initial={{ opacity: 0, translateY: "100%" }}
+            initial={{ opacity: 0, translateY: "50px" }}
             animate={
                 isOpen
-                    ? { opacity: 0, translateY: "100%" }
+                    ? { opacity: 0, translateY: "50px" }
                     : { opacity: 1, translateY: 0 }
             }
             transition={{
