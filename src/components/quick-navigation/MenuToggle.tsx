@@ -9,7 +9,6 @@ interface MenuToggleProps {
 }
 
 const MenuToggle = ({ isOpen, toggleOpen }: MenuToggleProps) => {
-    console.log("isOpen", isOpen);
     return (
         <div className={`relative z-20 ${isOpen ? "" : "gelatine"}`}>
             {isOpen ? (
@@ -29,7 +28,7 @@ const MenuToggle = ({ isOpen, toggleOpen }: MenuToggleProps) => {
                         className="flex items-center"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.4 }}
                         exit={{ opacity: 0 }}
                     >
                         <img src={iconOpen} className="w-8 h-8 " />
