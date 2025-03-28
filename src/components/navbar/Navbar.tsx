@@ -35,7 +35,7 @@ const Navbar = () => {
 
     return (
         <motion.div
-            className="relative w-full nav-container z-10"
+            className="relative w-full nav-container z-100"
             initial={{ y: 0 }}
             animate={{ y: scrollingDown ? -80 : 0 }} // Hide navbar when scrolling down
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
