@@ -1,5 +1,5 @@
 import { motion, Variants } from "framer-motion";
-import CLink from "../../../common/CLink";
+import CLink from "../common/CLink";
 
 interface NavItemProp {
     item: { to: string; label: string; customClass: string };

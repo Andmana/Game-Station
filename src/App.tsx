@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar.tsx";
+import Nav from "./components/nav";
 
 function App() {
     return (
@@ -7,7 +7,7 @@ function App() {
             id="app"
             className="bg-dark relative min-h-screen text-white flex flex-col"
         >
-            <Navbar />
+            <Nav />
             <main className="isolate">
                 <Outlet />
             </main>

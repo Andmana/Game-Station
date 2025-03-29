@@ -1,15 +1,15 @@
-import SectionWrapper from "../SectionWrapper";
-import backgroundVideo from "../../../assets/videos/background-video.mp4";
-// import QuickNav from "./QuickNav";
 import { useCycle } from "framer-motion";
-import QuickNav from "./quick-nav/QuickNav";
+import backgroundVideo from "../../assets/videos/background-video.mp4";
+
+import QuickNav from "../quick-nav/QuickNav";
+import CSection from "../common/CSection";
 
 const FirstContent = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);
 
     return (
         <>
-            <SectionWrapper>
+            <CSection>
                 {/* Video Background */}
                 <div
                     id="video-background"
@@ -32,7 +32,7 @@ const FirstContent = () => {
                 >
                     <QuickNav isOpen={isOpen} toggleOpen={toggleOpen} />
                 </div>
-            </SectionWrapper>
+            </CSection>
         </>
     );
 };

@@ -1,4 +1,4 @@
-import FirstContent from "../../components/home-contents/first";
+import FirstContent from "../../components/content-first";
 
 const Homepage = () => {
     return (

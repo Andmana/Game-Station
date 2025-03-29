@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-interface SectionWrapperProps {
+interface CSectionProps {
     children: ReactNode;
     customClass?: string;
 }
 
-const SectionWrapper = ({ children, customClass }: SectionWrapperProps) => {
+const CSection = ({ children, customClass }: CSectionProps) => {
     return (
-        <motion.div
+        <motion.section
             className={`${customClass} relative h-screen w-full flex items-stretch justify-center overflow-hidden`}
         >
             {children}
-        </motion.div>
+        </motion.section>
     );
 };
 
-export default SectionWrapper;
+export default CSection;

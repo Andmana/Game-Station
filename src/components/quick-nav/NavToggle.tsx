@@ -1,6 +1,6 @@
-import CButton from "../../../common/CButton";
-import iconClose from "../../../../assets/images/icon-close.svg";
-import iconOpen from "../../../../assets/images/icon-open.svg";
+import iconClose from "../../assets/images/icon-close.svg";
+import iconOpen from "../../assets/images/icon-open.svg";
+import CButton from "../common/CButton";
 
 interface NavToggleProps {
     isOpen: boolean;
