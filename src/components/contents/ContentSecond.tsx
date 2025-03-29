@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { useScroll, useTransform, motion } from "framer-motion";
-import upcomingGames from "../carousels/dummy";
+import upcomingGames from "../carousel/dummy";
 import Carousel, { SPRING_OPTIONS } from "../carousel/Carousel";
 
 const ContentSecond = () => {
