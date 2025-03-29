@@ -10,7 +10,7 @@ interface QuickNavigationProps {
 const QuickNav = ({ isOpen, toggleOpen }: QuickNavigationProps) => {
     return (
         <motion.div
-            className="h-screen w-full flex justify-start items-center gap-2 md:gap-0"
+            className="h-screen w-full flex justify-start items-center gap-2 md:gap-0 pointer-events-auto"
             initial={false}
             animate={isOpen ? "open" : "closed"}
         >
