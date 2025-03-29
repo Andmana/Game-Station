@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { useScroll, useTransform, motion } from "framer-motion";
+import Carousel from "../carousels/Carousel";
 
 const ContentSecond = () => {
     const containerRef = useRef(null);
@@ -15,19 +16,19 @@ const ContentSecond = () => {
     const rotateXContainer = useTransform(
         scrollYProgress,
         [0, 0.25, 0.5, 0.75, 1],
-        ["80deg", "50deg", "20deg", "50deg", "80deg"]
+        ["80deg", "50deg", "10deg", "50deg", "85deg"]
     );
 
     const rotateXContent = useTransform(
         scrollYProgress,
         [0, 0.25, 0.5, 0.75, 1],
-        ["70deg", "35deg", "5deg", "35deg", "70deg"]
+        ["70deg", "35deg", "0deg", "35deg", "80deg"]
     );
 
     const opacity = useTransform(
         scrollYProgress,
         [0, 0.25, 0.5, 0.75, 1],
-        [0, 0.5, 1, 0.5, 0]
+        [0.5, 0.8, 1, 0.8, 0.5]
     );
 
     return (
