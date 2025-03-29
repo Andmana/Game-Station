@@ -1,0 +1,82 @@
+import { motion, useMotionValue } from "framer-motion";
+import { ComponentType, useEffect, useState } from "react";
+import CarouselDots from "./CarouselDots";
+
+interface CarouselProps {
+    CarouselItems: ComponentType<{ currentIdx: number }>;
+    itemsCount?: number;
+}
+
+const ONE_SECOND = 1000;
+const AUTO_DELAY = ONE_SECOND * 10;
+const DRAG_BUFFER = 50;
+
+const SPRING_OPTIONS = {
+    type: "spring",
+    mass: 3,
+    stiffness: 400,
+    damping: 50,
+};
+
+const Carousel = ({ CarouselItems, itemsCount = 0 }: CarouselProps) => {
+    const [currentIdx, setCurrentIdx] = useState(0);
+    const dragX = useMotionValue(0);
+
+    useEffect(() => {
+        const intervalRef = setInterval(() => {
+            const x = dragX.get();
+
+            if (x === 0) {
+                setCurrentIdx((pv) => {
+                    if (pv === itemsCount - 1) {
+                        return 0;
+                    }
+                    return pv + 1;
+                });
+            }
+        }, AUTO_DELAY);
+
+        return () => clearInterval(intervalRef);
+    }, []);
+
+    const onDragEnd = () => {
+        const x = dragX.get();
+
+        if (x <= -DRAG_BUFFER && currentIdx < itemsCount - 1) {
+            setCurrentIdx((pv) => pv + 1);
+        } else if (x >= DRAG_BUFFER && currentIdx > 0) {
+            setCurrentIdx((pv) => pv - 1);
+        }
+    };
+
+    return (
+        <div className="relative w-full h-full overflow-hidden">
+            <motion.div
+                className="w-full h-11/12 flex items-center active:cursor-grabbing"
+                drag="x"
+                dragConstraints={{
+                    left: 0,
+                    right: 0,
+                }}
+                style={{
+                    x: dragX,
+                }}
+                animate={{
+                    translateX: `-${currentIdx * 100}%`,
+                }}
+                transition={SPRING_OPTIONS}
+                onDragEnd={onDragEnd}
+            >
+                <CarouselItems currentIdx={currentIdx} />
+            </motion.div>
+            <CarouselDots
+                currentIdx={currentIdx}
+                itemsCount={itemsCount}
+                setCurrentIdx={setCurrentIdx}
+            />
+        </div>
+    );
+};
+
+export default Carousel;
+export { SPRING_OPTIONS };

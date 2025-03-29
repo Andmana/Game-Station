@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { useScroll, useTransform, motion } from "framer-motion";
-import Carousel from "../carousels/Carousel";
+import upcomingGames from "../carousels/dummy";
+import Carousel, { SPRING_OPTIONS } from "../carousel/Carousel";
 
 const ContentSecond = () => {
     const containerRef = useRef(null);
@@ -40,17 +41,47 @@ const ContentSecond = () => {
                 <motion.div
                     ref={containerRef}
                     style={{ rotateX: rotateXContainer }}
-                    className="absolute w-11/12 h-8/12 md:w-9/12 md:h-9/12 bg-amber-400 transform origin-bottom"
+                    className="absolute w-11/12 h-8/12 md:w-9/12 md:h-10/12 bg-amber-400 transform -translate-z-10 origin-bottom"
                 ></motion.div>
                 <motion.div
                     ref={contentRef}
                     style={{ rotateX: rotateXContent, opacity }}
-                    className="absolute w-11/12 h-8/12 md:w-9/12 md:h-9/12 transform origin-bottom translate-z-3"
+                    className="absolute w-11/12 h-8/12 md:w-9/12 md:h-10/12 transform origin-bottom translate-z-3"
                 >
-                    <Carousel />
+                    <Carousel
+                        CarouselItems={CarouselItems}
+                        itemsCount={upcomingGames.length}
+                    />
                 </motion.div>
             </div>
         </SectionWrapper>
+    );
+};
+
+interface CarouselItemsProps {
+    currentIdx: number;
+}
+
+const CarouselItems = ({ currentIdx }: CarouselItemsProps) => {
+    const items = upcomingGames;
+    return (
+        <>
+            {items.map((item) => (
+                <motion.div
+                    key={item.id}
+                    style={{
+                        backgroundImage: `url(${item.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}
+                    animate={{
+                        scale: currentIdx === item.id ? 1 : 0.85,
+                    }}
+                    transition={SPRING_OPTIONS}
+                    className="w-full h-full shrink-0 bg-neutral-800 rounded-xl object-cover"
+                />
+            ))}
+        </>
     );
 };
 
