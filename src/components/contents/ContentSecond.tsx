@@ -45,8 +45,10 @@ const ContentSecond = () => {
                 <motion.div
                     ref={contentRef}
                     style={{ rotateX: rotateXContent, opacity }}
-                    className="absolute w-11/12 h-8/12 md:w-9/12 md:h-9/12 bg-red-400 transform origin-bottom translate-z-3"
-                ></motion.div>
+                    className="absolute w-11/12 h-8/12 md:w-9/12 md:h-9/12 transform origin-bottom translate-z-3"
+                >
+                    <Carousel />
+                </motion.div>
             </div>
         </SectionWrapper>
     );
