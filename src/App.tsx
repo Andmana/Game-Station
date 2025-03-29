@@ -8,7 +8,9 @@ function App() {
             className="bg-dark relative min-h-screen text-white flex flex-col"
         >
             <Navbar />
-            <Outlet />
+            <main className="isolate">
+                <Outlet />
+            </main>
         </div>
     );
 }

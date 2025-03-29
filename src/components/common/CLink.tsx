@@ -13,7 +13,7 @@ const CLink = ({ to, children }: NavigationLinkProps) => {
         <motion.div {...transitionConfig}>
             <Link
                 to={to}
-                className="flex items-center justify-center gap-1.5 font-semibold"
+                className="flex items-center justify-center gap-1.5 font-semibold py-1"
             >
                 {children}
             </Link>
