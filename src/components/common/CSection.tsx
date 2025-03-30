@@ -9,7 +9,7 @@ interface CSectionProps {
 const CSection = ({ children, customClass }: CSectionProps) => {
     return (
         <motion.section
-            className={`${customClass} relative h-screen w-full flex items-stretch justify-center overflow-hidden`}
+            className={`${customClass} relative h-screen w-full overflow-hidden`}
         >
             {children}
         </motion.section>

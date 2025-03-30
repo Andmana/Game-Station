@@ -1,6 +1,7 @@
 import { motion, useMotionValue } from "framer-motion";
 import { ComponentType, useEffect, useState } from "react";
 import CarouselDots from "./CarouselDots";
+import { SPRING_OPTIONS } from "../common/modules";
 
 interface CarouselProps {
     CarouselItems: ComponentType<{ currentIdx: number }>;
@@ -10,13 +11,6 @@ interface CarouselProps {
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
 const DRAG_BUFFER = 50;
-
-const SPRING_OPTIONS = {
-    type: "spring",
-    mass: 3,
-    stiffness: 400,
-    damping: 50,
-};
 
 const Carousel = ({ CarouselItems, itemsCount = 0 }: CarouselProps) => {
     const [currentIdx, setCurrentIdx] = useState(0);
@@ -79,4 +73,3 @@ const Carousel = ({ CarouselItems, itemsCount = 0 }: CarouselProps) => {
 };
 
 export default Carousel;
-export { SPRING_OPTIONS };

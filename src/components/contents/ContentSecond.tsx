@@ -2,7 +2,8 @@ import { useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { useScroll, useTransform, motion } from "framer-motion";
 import upcomingGames from "../carousel/dummy";
-import Carousel, { SPRING_OPTIONS } from "../carousel/Carousel";
+import { SPRING_OPTIONS } from "../common/modules";
+import Carousel from "../carousel";
 
 const ContentSecond = () => {
     const containerRef = useRef(null);
