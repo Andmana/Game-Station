@@ -34,25 +34,27 @@ const SecondContent = () => {
     );
 
     return (
-        <CSection customClass="flex justify-center items-center main-padding transform-3d perspective-distant perspective-origin-center">
-            <div className="absolute text-4xl top-5 transform translate-y-1/2">
+        <CSection customClass="flex flex-col justify-center items-center main-padding">
+            <div className="text-4xl top-5 transform">
                 <h2>UP COMING</h2>
             </div>
-            <motion.div
-                ref={containerRef}
-                style={{ rotateX: rotateXContainer }}
-                className="absolute w-11/12 h-8/12 md:w-9/12 md:h-10/12 bg-amber-400 transform -translate-z-10 origin-bottom"
-            ></motion.div>
-            <motion.div
-                ref={contentRef}
-                style={{ rotateX: rotateXContent, opacity }}
-                className="absolute w-11/12 h-8/12 md:w-9/12 md:h-10/12 transform origin-bottom translate-z-3 p-1"
-            >
-                <Carousel
-                    CarouselItems={CarouselItems}
-                    itemsCount={upcomingGames.length}
-                />
-            </motion.div>
+            <div className="relative  w-11/12 h-8/12 md:w-9/12 md:h-10/12 flex items-center justify-around ransform-3d perspective-distant perspective-origin-center">
+                <motion.div
+                    ref={containerRef}
+                    style={{ rotateX: rotateXContainer }}
+                    className="absolute w-full h-full bg-amber-400 transform -translate-z-10 origin-bottom"
+                ></motion.div>
+                <motion.div
+                    ref={contentRef}
+                    style={{ rotateX: rotateXContent, opacity }}
+                    className="absolute w-full h-full transform origin-bottom translate-z-3 p-1"
+                >
+                    <Carousel
+                        CarouselItems={CarouselItems}
+                        itemsCount={upcomingGames.length}
+                    />
+                </motion.div>
+            </div>
         </CSection>
     );
 };
