@@ -33,7 +33,7 @@ const FirstContent = () => {
                 >
                     <QuickNav isOpen={isOpen} toggleOpen={toggleOpen} />
                 </div>
-                <div className="absolute h-screen right-0 main-padding flex justify-center items-end md:items-center transform-3d pointer-events-none">
+                <div className="absolute h-screen w-full right-0 main-padding flex justify-center md:justify-end items-end md:items-center transform-3d pointer-events-none">
                     <TiltCard isOpen={isOpen} />
                 </div>
             </CSection>

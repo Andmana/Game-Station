@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+    font-size: 16px;
+}
+
 .bg-dark {
     background-color: #242424;
 }
@@ -35,7 +39,35 @@ h3 {
     padding: 1.5rem 2.5rem 1rem;
 }
 
-@media (min-width: 601) and (max-width: 900px) {
+.bg-third-content {
+    background-image: linear-gradient(to right, #f87171, #f87171);
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 639px) {
+    .main-padding {
+        padding: 1rem 0.6rem;
+    }
+}
+
+@media (min-width: 640px) {
+    h1 {
+        font-size: 1.4rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+    .main-padding {
+        padding: 1rem 0.6rem;
+    }
+}
+
+@media (min-width: 724px) {
     h1 {
         font-size: 1.5rem;
     }
@@ -51,18 +83,10 @@ h3 {
     }
 }
 
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.4rem;
-    }
-    h2 {
-        font-size: 1.2rem;
-    }
-    h3 {
-        font-size: 1.1em;
-    }
-    .main-padding {
-        padding: 1rem 0.6rem;
+@media (min-width: 1024px) {
+    .text-vertical {
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
     }
 }
 
