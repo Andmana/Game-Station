@@ -86,7 +86,15 @@ const TiltCard = ({ isOpen }: TiltCardProps) => {
                     here.
                 </p>
 
-                <div className="flex justify-center gap-8 py-1 rounded-2xl text-center mt-2">
+                <motion.div
+                    style={{
+                        rotateX,
+                        rotateY,
+                        translateZ: "100px",
+                        transformStyle: "preserve-3d",
+                    }}
+                    className="flex justify-center gap-8 py-1 rounded-2xl text-center mt-2"
+                >
                     <a
                         className="w-[100px] border-b-2 py-2 flex justify-center"
                         href="https://github.com/Andmana/Game-Station"
@@ -99,7 +107,7 @@ const TiltCard = ({ isOpen }: TiltCardProps) => {
                     >
                         RAWG API
                     </a>
-                </div>
+                </motion.div>
             </div>
         </motion.div>
     );
