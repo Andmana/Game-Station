@@ -8,7 +8,11 @@ import logoImg from "../../assets/images/logo.png";
 import iconCart from "../../assets/images/icon-cart.svg";
 import NavSearch from "./NavSearch";
 
-const Nav = () => {
+interface NavProps {
+    handleCartState: () => void;
+}
+
+const Nav = ({ handleCartState }: NavProps) => {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
     const [prevScroll, setPrevScroll] = useState(0);
@@ -34,7 +38,7 @@ const Nav = () => {
                 duration: 0.6,
                 staggerChildren: 0.05,
             }}
-            className="fixed z-100 isolate w-full top-0 left-0 main-padding nav-shadow flex justify-between items-center gap-2.5"
+            className="fixed z-10 isolate w-full top-0 left-0 main-padding nav-shadow flex justify-between items-center gap-2.5"
         >
             {/* Hero */}
             <CLink to="/">
@@ -55,7 +59,12 @@ const Nav = () => {
             {/* Cart */}
 
             <CButton>
-                <img className="w-8 h-8" src={iconCart} alt="submit search" />
+                <img
+                    className="w-8 h-8"
+                    src={iconCart}
+                    alt="submit search"
+                    onClick={handleCartState}
+                />
             </CButton>
         </motion.nav>
     );
