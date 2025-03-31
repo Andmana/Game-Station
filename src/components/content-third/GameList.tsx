@@ -44,7 +44,7 @@ const GameList = ({ isCarousel = false }: GameListProps) => {
             variants={listVariants}
             className={
                 isCarousel
-                    ? "w-full h-full shrink-0 flex flex-col flex-center items-stretch main-padding"
+                    ? "w-full h-full shrink-0 flex flex-col flex-center justify-center items-stretch py-2 px-4 sm:px-[30%]"
                     : ""
             }
         >
