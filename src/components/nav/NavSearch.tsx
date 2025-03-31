@@ -12,7 +12,7 @@ const NavSearch = () => {
             className={`flex-1 max-w-[500px] flex items-center justify-center`}
         >
             <motion.div
-                className="flex items-center"
+                className="flex items-center relative"
                 initial={{ width: "200px" }}
                 animate={{
                     width: isFocused ? "clamp(200px, 90%, 450px)" : "200px",
