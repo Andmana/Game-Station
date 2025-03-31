@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./components/nav";
+import AsideCard from "./components/aside-cart";
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <main className="isolate">
                 <Outlet />
             </main>
+            <AsideCard />
         </div>
     );
 }
