@@ -1,6 +1,7 @@
 import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
 
 const sharedTransition = {
+    delay: 0.5,
     duration: 0.4,
     type: "spring",
     damping: 20,

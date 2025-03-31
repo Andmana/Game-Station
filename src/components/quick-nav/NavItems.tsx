@@ -51,7 +51,7 @@ const NavItems = ({ isOpen }: NavItemsProps) => {
                         bounce: 0,
                         duration: 0.3,
                         when: "afterChildren",
-                        staggerDirection: -1,
+                        staggerDirection: 1,
                         staggerChildren: 0.1,
                     },
                 },

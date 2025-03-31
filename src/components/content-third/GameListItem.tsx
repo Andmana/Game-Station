@@ -1,36 +1,17 @@
-import { useEffect, useRef, useState } from "react";
 import generateRandomPrice from "../../utils/randomPrice";
 import CLink from "../common/CLink";
-import { useInView, motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface GameListItemProps {
     title: string;
     image: string;
-    index: number;
+    variants: Variants;
 }
 
-const GameListItem = ({ title, image, index }: GameListItemProps) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref);
-    const [appearOnce, setAppearOnce] = useState(false);
-
-    useEffect(() => {
-        if (!appearOnce && isInView) {
-            setAppearOnce(true);
-        }
-    }, [isInView]);
-
+const GameListItem = ({ title, image, variants }: GameListItemProps) => {
     return (
         <motion.div
-            ref={ref}
-            animate={{
-                opacity: isInView ? 1 : 0,
-                y: isInView ? 0 : 50,
-                transition: {
-                    delay: appearOnce ? 0.2 : index * 0.2,
-                    duration: 0.6,
-                },
-            }}
+            variants={variants}
             className="w-full flex justify-start text-[1rem]"
         >
             <CLink to="/shop">
