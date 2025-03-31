@@ -32,14 +32,23 @@ const listVariants = {
     },
 };
 
-const GameList = () => {
+interface GameListProps {
+    isCarousel?: boolean;
+}
+
+const GameList = ({ isCarousel = false }: GameListProps) => {
     return (
         <motion.div
             initial="hidden"
             whileInView="visible"
             variants={listVariants}
+            className={
+                isCarousel
+                    ? "w-full h-full shrink-0 flex flex-col flex-center items-stretch main-padding"
+                    : ""
+            }
         >
-            <h2 className="mb-4">GENRE</h2>
+            <h2 className="md:mb-4 pointer-events-none text-start">GENRE</h2>
             <ul className="flex flex-col gap-4 justify-start ">
                 {upcomingGames.map((item) => (
                     <GameListItem
