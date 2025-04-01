@@ -1,6 +1,9 @@
 import { GameRequest, GamesRequest } from "../../types/api";
 import { Game } from "../../types/game";
-import { dateNextYear, dateNow } from "../../utils/dateFormat";
+import {
+    getCurrentDateIsoString,
+    getOneYearLaterDateIsoString,
+} from "../../utils/formatDate";
 import { GetRequest } from "../api/api";
 
 export const GetGameById = async (GameId: number): Promise<Game> => {
@@ -22,7 +25,7 @@ export const GetGameById = async (GameId: number): Promise<Game> => {
         description,
         released,
         background_image,
-        platforms: parent_platforms,
+        platforms: parent_platforms.map((item) => item.platform),
         developers,
         genres,
         rating: esrb_rating,
@@ -32,7 +35,7 @@ export const GetGameById = async (GameId: number): Promise<Game> => {
 export const getUpcomingGames = async (): Promise<Game[]> => {
     const params = {
         ordering: "-added",
-        dates: `${dateNow()},${dateNextYear()}`,
+        dates: `${getCurrentDateIsoString()},${getOneYearLaterDateIsoString()}`,
         page_size: 6,
     };
 
@@ -52,7 +55,6 @@ export const getUpcomingGames = async (): Promise<Game[]> => {
             parent_platforms,
             developers,
             genres,
-            esrb_rating,
         } = game;
         const newEntry: Game = {
             id,
@@ -60,10 +62,9 @@ export const getUpcomingGames = async (): Promise<Game[]> => {
             description,
             released,
             background_image,
-            platforms: parent_platforms,
+            platforms: parent_platforms.map((item) => item.platform),
             developers,
             genres,
-            rating: esrb_rating,
         };
 
         data.push(newEntry);

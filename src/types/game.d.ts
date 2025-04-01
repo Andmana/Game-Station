@@ -1,6 +1,7 @@
 export interface Platform {
     id: number;
     name: string;
+    slug: string;
 }
 
 export interface Developers {
@@ -11,6 +12,7 @@ export interface Developers {
 export interface Genre {
     id: number;
     name: string;
+    slug: string;
 }
 
 export interface Rating {
@@ -26,13 +28,13 @@ export interface Screenshot {
 export interface Game {
     id: number;
     name: string;
-    description: string;
     released: string;
     background_image: string;
     platforms: Platform[];
-    developers: Developers[];
     genres: Genre[];
-    rating: Rating;
+    developers?: Developers[];
+    description?: string;
+    rating?: Rating;
     price?: string;
     images?: Screenshot[];
 }
