@@ -3,8 +3,8 @@ import upcomingGames from "../carousel/dummy";
 import GameListItem from "./GameListItem";
 
 const itemVariants = {
-    hidden: { opacity: 0, translateY: "-2rem" },
-    visible: { opacity: 1, translateY: "0" },
+    hidden: { opacity: 0, translateY: -50 },
+    visible: { opacity: 1, translateY: 0 },
 };
 
 const listVariants = {

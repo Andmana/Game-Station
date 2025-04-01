@@ -32,7 +32,9 @@ const Nav = ({ handleCartState }: NavProps) => {
 
     return (
         <motion.nav
-            animate={hidden ? { opacity: 0, y: "-2rem" } : { opacity: 1, y: 0 }}
+            animate={
+                hidden ? { opacity: 0, y: "-100%" } : { opacity: 1, y: "0%" }
+            }
             transition={{
                 ease: [0.1, 0.25, 0.3, 1],
                 duration: 0.6,
