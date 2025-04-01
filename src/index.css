@@ -39,8 +39,8 @@ h3 {
     padding: 1.5rem 2.5rem 1rem;
 }
 
-.bg-third-content {
-    background-image: linear-gradient(to right, #f87171, #f87171);
+.bg-custom {
+    background-image: linear-gradient(to top, black, #00000004);
     background-position: left;
     background-size: cover;
     background-repeat: no-repeat;

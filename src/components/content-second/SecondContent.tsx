@@ -3,7 +3,9 @@ import CSection from "../common/CSection";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Carousel from "../carousel";
 import CarouselItems from "./CarouselItems";
-import upcomingGames from "../carousel/dummy";
+import { dummyData } from "./dummy";
+
+const data = dummyData;
 
 const SecondContent = () => {
     const containerRef = useRef(null);
@@ -51,7 +53,7 @@ const SecondContent = () => {
                 >
                     <Carousel
                         CarouselItems={CarouselItems}
-                        itemsCount={upcomingGames.length}
+                        itemsCount={data.length}
                     />
                 </motion.div>
             </div>
