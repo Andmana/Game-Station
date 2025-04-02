@@ -1,24 +1,34 @@
 import { useRef } from "react";
-import CSection from "../common/CSection";
 import { useScroll, useTransform, motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+
+import CSection from "../common/CSection";
 import Carousel from "../carousel";
 import CarouselItems from "./CarouselItems";
-import { useQuery } from "@tanstack/react-query";
-import { getUpcomingGames } from "../../services/requests/apiRequest";
 import Loading from "../common/Loading";
 import ErrorPage from "../../pages/ErrorPage";
 
+import { dummyData } from "./dummy";
+import { Game } from "../../types/game";
+import { getUpcomingGames } from "../../services/requests/apiRequest";
+
+const mockApi = async () => {
+    return new Promise<Game[]>((resolve) => {
+        setTimeout(() => {
+            resolve(dummyData);
+        }, 5000);
+    });
+};
+
 const SecondContent = () => {
+    const useMock = false;
+
     const containerRef = useRef(null);
     const contentRef = useRef(null);
 
-    const {
-        data,
-        error,
-        isPending: loading,
-    } = useQuery({
-        queryKey: ["upcoming"],
-        queryFn: () => getUpcomingGames(),
+    const { data, error, isLoading } = useQuery<Game[], Error>({
+        queryKey: ["games"], // query key
+        queryFn: useMock ? mockApi : getUpcomingGames,
     });
 
     const { scrollYProgress } = useScroll({
@@ -52,7 +62,7 @@ const SecondContent = () => {
             <div className="text-4xl top-5 transform">
                 <h2>UP COMING</h2>
             </div>
-            {loading ? (
+            {isLoading ? (
                 <Loading />
             ) : (
                 <div className="relative  w-11/12 h-8/12 md:w-9/12 md:h-10/12 flex items-center justify-around ransform-3d perspective-distant perspective-origin-center">
@@ -66,11 +76,13 @@ const SecondContent = () => {
                         style={{ rotateX: rotateXContent, opacity }}
                         className="absolute w-full h-full transform origin-bottom translate-z-3 p-1"
                     >
-                        <Carousel
-                            CarouselItems={CarouselItems}
-                            itemsCount={data.length}
-                            carouselData={data}
-                        />
+                        {data && data.length > 0 && (
+                            <Carousel
+                                CarouselItems={CarouselItems}
+                                itemsCount={data.length}
+                                carouselData={data}
+                            />
+                        )}
                     </motion.div>
                 </div>
             )}

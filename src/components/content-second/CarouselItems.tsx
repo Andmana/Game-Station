@@ -9,8 +9,6 @@ interface CarouselItemsProps {
     carouselData: unknown;
 }
 
-// const carouselData = dummyData;
-
 const CarouselItems = ({ currentIdx, carouselData }: CarouselItemsProps) => {
     const data = carouselData as Game[];
     return (
