@@ -36,7 +36,7 @@ export const getUpcomingGames = async (): Promise<Game[]> => {
     const params = {
         ordering: "-added",
         dates: `${getCurrentDateIsoString()},${getOneYearLaterDateIsoString()}`,
-        page_size: 6,
+        page_size: 10,
     };
 
     const response: GamesRequest = await GetRequest<GamesRequest>(

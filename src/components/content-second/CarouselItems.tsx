@@ -1,19 +1,21 @@
 import { motion } from "framer-motion";
 import { SPRING_OPTIONS } from "../common/modules";
-import { dummyData } from "./dummy";
 import { platformIcons } from "../../utils/platformIcons";
 import { formatStringToReadableDate } from "../../utils/formatDate";
+import { Game } from "../../types/game";
 
 interface CarouselItemsProps {
     currentIdx: number;
+    carouselData: unknown;
 }
 
-const carouselData = dummyData;
+// const carouselData = dummyData;
 
-const CarouselItems = ({ currentIdx }: CarouselItemsProps) => {
+const CarouselItems = ({ currentIdx, carouselData }: CarouselItemsProps) => {
+    const data = carouselData as Game[];
     return (
         <>
-            {carouselData.map((item) => (
+            {data.map((item) => (
                 <motion.div
                     key={item.id}
                     style={{

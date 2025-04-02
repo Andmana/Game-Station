@@ -3,13 +3,23 @@ import CSection from "../common/CSection";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Carousel from "../carousel";
 import CarouselItems from "./CarouselItems";
-import { dummyData } from "./dummy";
-
-const data = dummyData;
+import { useQuery } from "@tanstack/react-query";
+import { getUpcomingGames } from "../../services/requests/apiRequest";
+import Loading from "../common/Loading";
+import ErrorPage from "../../pages/ErrorPage";
 
 const SecondContent = () => {
     const containerRef = useRef(null);
     const contentRef = useRef(null);
+
+    const {
+        data,
+        error,
+        isPending: loading,
+    } = useQuery({
+        queryKey: ["upcoming"],
+        queryFn: () => getUpcomingGames(),
+    });
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -35,28 +45,35 @@ const SecondContent = () => {
         [0.5, 0.8, 1, 0.8, 0.5]
     );
 
+    if (error) return <ErrorPage />;
+
     return (
         <CSection customClass="flex flex-col justify-center items-center main-padding">
             <div className="text-4xl top-5 transform">
                 <h2>UP COMING</h2>
             </div>
-            <div className="relative  w-11/12 h-8/12 md:w-9/12 md:h-10/12 flex items-center justify-around ransform-3d perspective-distant perspective-origin-center">
-                <motion.div
-                    ref={containerRef}
-                    style={{ rotateX: rotateXContainer }}
-                    className="absolute w-full h-full bg-amber-400 transform -translate-z-10 origin-bottom"
-                ></motion.div>
-                <motion.div
-                    ref={contentRef}
-                    style={{ rotateX: rotateXContent, opacity }}
-                    className="absolute w-full h-full transform origin-bottom translate-z-3 p-1"
-                >
-                    <Carousel
-                        CarouselItems={CarouselItems}
-                        itemsCount={data.length}
-                    />
-                </motion.div>
-            </div>
+            {loading ? (
+                <Loading />
+            ) : (
+                <div className="relative  w-11/12 h-8/12 md:w-9/12 md:h-10/12 flex items-center justify-around ransform-3d perspective-distant perspective-origin-center">
+                    <motion.div
+                        ref={containerRef}
+                        style={{ rotateX: rotateXContainer }}
+                        className="absolute w-full h-full bg-amber-400 transform -translate-z-10 origin-bottom"
+                    ></motion.div>
+                    <motion.div
+                        ref={contentRef}
+                        style={{ rotateX: rotateXContent, opacity }}
+                        className="absolute w-full h-full transform origin-bottom translate-z-3 p-1"
+                    >
+                        <Carousel
+                            CarouselItems={CarouselItems}
+                            itemsCount={data.length}
+                            carouselData={data}
+                        />
+                    </motion.div>
+                </div>
+            )}
         </CSection>
     );
 };

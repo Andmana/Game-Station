@@ -4,15 +4,20 @@ import CarouselDots from "./CarouselDots";
 import { SPRING_OPTIONS } from "../common/modules";
 
 interface CarouselProps {
-    CarouselItems: ComponentType<{ currentIdx: number }>;
+    CarouselItems: ComponentType<{ currentIdx: number; carouselData: unknown }>;
     itemsCount?: number;
+    carouselData: unknown;
 }
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
 const DRAG_BUFFER = 50;
 
-const Carousel = ({ CarouselItems, itemsCount = 0 }: CarouselProps) => {
+const Carousel = ({
+    CarouselItems,
+    itemsCount = 0,
+    carouselData,
+}: CarouselProps) => {
     const [currentIdx, setCurrentIdx] = useState(0);
     const dragX = useMotionValue(0);
 
@@ -61,7 +66,10 @@ const Carousel = ({ CarouselItems, itemsCount = 0 }: CarouselProps) => {
                 transition={SPRING_OPTIONS}
                 onDragEnd={onDragEnd}
             >
-                <CarouselItems currentIdx={currentIdx} />
+                <CarouselItems
+                    currentIdx={currentIdx}
+                    carouselData={carouselData}
+                />
             </motion.div>
             <CarouselDots
                 currentIdx={currentIdx}

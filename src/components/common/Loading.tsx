@@ -1,4 +1,4 @@
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import bubble from "../../assets/images/buble.png";
 
 interface LoadingProps {
@@ -18,7 +18,6 @@ const Loading = ({ customClass }: LoadingProps) => {
             repeatDelay: 1.5, // Unique repeat delay
             width: 40,
             height: 40,
-            ease: "inease", // Smoother easing
         },
         {
             y: [20, -30, -80, -130, -180],
@@ -31,7 +30,6 @@ const Loading = ({ customClass }: LoadingProps) => {
             repeatDelay: 4, // Unique repeat delay
             width: 30,
             height: 30,
-            ease: "inease",
         },
         {
             y: [10, -60, -110, -160, -210],
@@ -44,7 +42,6 @@ const Loading = ({ customClass }: LoadingProps) => {
             repeatDelay: 2.2, // Unique repeat delay
             width: 45,
             height: 45,
-            ease: "inease",
         },
         {
             y: [-10, -40, -90, -140, -190],
@@ -57,7 +54,6 @@ const Loading = ({ customClass }: LoadingProps) => {
             repeatDelay: 1.2, // Unique repeat delay
             width: 38,
             height: 38,
-            ease: "inease",
         },
         {
             y: [5, -55, -105, -155, -205],
@@ -70,7 +66,6 @@ const Loading = ({ customClass }: LoadingProps) => {
             repeatDelay: 7, // Unique repeat delay
             width: 35,
             height: 35,
-            ease: "inease",
         },
     ];
 
