@@ -11,27 +11,28 @@ import {
 export interface IGameDetailResponse {
     id: number;
     name: string;
+    slug: string;
     description: string;
     released?: string;
-    background_image: string;
-    genres: IGenres;
-    parent_platforms: IParentPlatform[];
-    developers: IDevelopers[];
-    publishers: IPublisher[];
-    tags: ITags[];
+    background_image?: string;
+    genres?: IGenres;
+    parent_platforms?: IParentPlatform[];
+    developers?: IDevelopers[];
+    publishers?: IPublisher[];
+    tags?: ITags[];
     esrb_rating: IContentRating;
 }
 
 export interface IGameResultResponse {
     id: number;
-    slug: string;
     name: string;
+    slug: string;
     released?: string;
-    genres: IGenres;
-    tags: ITags;
+    genres?: IGenres;
+    tags?: ITags;
     background_image?: string;
     parent_platforms?: IParentPlatform[];
-    esrb_rating: IContentRating;
+    esrb_rating?: IContentRating;
 }
 
 export interface IGamesResponse {

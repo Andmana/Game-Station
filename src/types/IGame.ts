@@ -15,11 +15,12 @@ export interface IGame {
     description?: string;
     released?: string;
     background_image?: string;
-    genres: IGenres;
-    platforms: IPlatform[];
-    developers: IDevelopers[];
-    publishers: IPublisher[];
-    tags: ITags[];
-    contentRating: IContentRating;
+    genres?: IGenres;
+    platforms?: IPlatform[];
+    developers?: IDevelopers[];
+    publishers?: IPublisher[];
+    tags?: ITags[];
+    contentRating?: IContentRating;
     screenshots?: IScreenshots;
+    price?: number;
 }
