@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import upcomingGames from "../carousel/dummy";
 import GameListItem from "./GameListItem";
+import { Game } from "../../types/game";
 
 const itemVariants = {
     hidden: { opacity: 0, translateY: -50 },
@@ -34,9 +34,11 @@ const listVariants = {
 
 interface GameListProps {
     isCarousel?: boolean;
+    genre: string;
+    games: Game[];
 }
 
-const GameList = ({ isCarousel = false }: GameListProps) => {
+const GameList = ({ isCarousel = false, genre, games }: GameListProps) => {
     return (
         <motion.div
             initial="hidden"
@@ -48,13 +50,13 @@ const GameList = ({ isCarousel = false }: GameListProps) => {
                     : ""
             }
         >
-            <h2 className="md:mb-4 pointer-events-none text-start">GENRE</h2>
+            <h2 className="md:mb-4 pointer-events-none text-start">{genre}</h2>
             <ul className="flex flex-col gap-4 justify-start ">
-                {upcomingGames.map((item) => (
+                {games.map((item) => (
                     <GameListItem
                         key={item.id}
-                        title={item.title}
-                        image={item.image}
+                        gameName={item.name}
+                        gameImage={item.background_image}
                         variants={itemVariants}
                     />
                 ))}

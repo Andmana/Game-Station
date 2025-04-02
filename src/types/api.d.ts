@@ -15,7 +15,7 @@ export interface PlatformProps {
     slug: string;
 }
 
-export interface GameRequest {
+export interface GameResponse {
     id: number;
     name: string;
     description: string;
@@ -29,9 +29,9 @@ export interface GameRequest {
     esrb_rating: Rating;
 }
 
-export interface GamesRequest {
+export interface GamesResponse {
     count: number;
     next: string;
     previous: string;
-    results: GameRequest[];
+    results: GameResponse[];
 }

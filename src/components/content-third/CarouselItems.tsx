@@ -1,12 +1,21 @@
 import GameList from "./GameList";
+import { CarouselData } from "./ThirdContent";
 
-const arrayBlank = ["", "", ""];
+interface CarouselItemsProps {
+    carouselData: unknown;
+}
 
-const CarouselItems = () => {
+const CarouselItems = ({ carouselData }: CarouselItemsProps) => {
+    const data = carouselData as CarouselData[];
     return (
         <>
-            {arrayBlank.map((_, index) => (
-                <GameList key={index} isCarousel={true} />
+            {data.map((item, index) => (
+                <GameList
+                    key={index}
+                    isCarousel={true}
+                    genre={item.name}
+                    games={item.games}
+                />
             ))}
         </>
     );

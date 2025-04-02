@@ -1,4 +1,4 @@
-import { GameRequest, GamesRequest } from "../../types/api";
+import { GameResponse, GamesResponse } from "../../types/api";
 import { Game } from "../../types/game";
 import {
     getCurrentDateIsoString,
@@ -17,7 +17,7 @@ export const GetGameById = async (GameId: number): Promise<Game> => {
         developers,
         genres,
         esrb_rating,
-    } = await GetRequest<GameRequest>(`games/${GameId}`);
+    } = await GetRequest<GameResponse>(`games/${GameId}`);
 
     return {
         id,
@@ -39,7 +39,44 @@ export const getUpcomingGames = async (): Promise<Game[]> => {
         page_size: 10,
     };
 
-    const response: GamesRequest = await GetRequest<GamesRequest>(
+    const response: GamesResponse = await GetRequest<GamesResponse>(
+        "games",
+        params
+    );
+
+    const data: Game[] = [];
+    for (const game of response.results) {
+        const {
+            id,
+            name,
+            description,
+            released,
+            background_image,
+            parent_platforms,
+            developers,
+            genres,
+        } = game;
+        const newEntry: Game = {
+            id,
+            name,
+            description,
+            released,
+            background_image,
+            platforms: parent_platforms.map((item) => item.platform),
+            developers,
+            genres,
+        };
+
+        data.push(newEntry);
+    }
+
+    return data;
+};
+
+export const getGames = async (
+    params: Record<string, unknown>
+): Promise<Game[]> => {
+    const response: GamesResponse = await GetRequest<GamesResponse>(
         "games",
         params
     );
