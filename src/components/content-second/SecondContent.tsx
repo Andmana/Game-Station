@@ -25,20 +25,20 @@ const SecondContent = () => {
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start end", "end start"], // This starts the animation when the top of the container reaches the bottom of the viewport, and ends when the bottom reaches the top.
+        offset: ["start center", "end center"], // This starts the animation when the top of the container reaches the bottom of the viewport, and ends when the bottom reaches the top.
     });
 
     // Rotate transformations
     const rotateXContainer = useTransform(
         scrollYProgress,
         [0, 0.25, 0.5, 0.75, 1],
-        ["80deg", "50deg", "10deg", "50deg", "85deg"]
+        ["90deg", "80deg", "10deg", "80deg", "85deg"]
     );
 
     const rotateXContent = useTransform(
         scrollYProgress,
         [0, 0.25, 0.5, 0.75, 1],
-        ["70deg", "35deg", "0deg", "35deg", "80deg"]
+        ["70deg", "60deg", "0deg", "60deg", "80deg"]
     );
 
     const opacity = useTransform(

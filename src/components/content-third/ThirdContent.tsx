@@ -14,13 +14,13 @@ import { mockGetTopGamesByGenre } from "../../services/MockServices";
 import { getTopGamesByGenre } from "../../services/AllServices";
 
 const ThirdContent = () => {
-    const isMock = true;
+    const useMock = true;
     const { data, error, isLoading } = useQuery<
         { name: string; games: IGame[] }[],
         Error
     >({
         queryKey: ["topByGenres"], // query key
-        queryFn: isMock ? mockGetTopGamesByGenre : getTopGamesByGenre,
+        queryFn: useMock ? mockGetTopGamesByGenre : getTopGamesByGenre,
     });
 
     if (error) return <ErrorPage />;
