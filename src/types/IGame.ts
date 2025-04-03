@@ -15,7 +15,7 @@ export interface IGame {
     description?: string;
     released?: string;
     background_image?: string;
-    genres?: IGenres;
+    genres?: IGenres[];
     platforms?: IPlatform[];
     developers?: IDevelopers[];
     publishers?: IPublisher[];
