@@ -6,6 +6,7 @@ import {
     getCurrentDateIsoString,
     getOneYearLaterDateIsoString,
 } from "../../utils/formatDate";
+import { getGamePrice } from "../local-storage/AllServices";
 
 // Function to fetch game details by ID
 export const getGameById = async (GameId: number): Promise<IGame> => {
@@ -13,6 +14,7 @@ export const getGameById = async (GameId: number): Promise<IGame> => {
     const responseData = await fetchData<IGameDetailResponse>(endpoint);
 
     const result = mappingIGameDetailed(responseData);
+    result.price = getGamePrice(result.id);
     return result;
 };
 
@@ -25,6 +27,7 @@ export const getMultipleGames = async (
     const results: IGame[] = [];
     for (const rawData of responseData.results) {
         const data = mappingIGame(rawData);
+        data.price = getGamePrice(data.id);
 
         results.push(data);
     }
