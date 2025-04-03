@@ -1,14 +1,14 @@
-import generateRandomPrice from "../../utils/randomPrice";
-import CLink from "../common/CLink";
 import { motion, Variants } from "framer-motion";
+import CLink from "../common/CLink";
+import { IGame } from "../../types/IGame";
+import defaultImg from "../../assets/images/default.png";
 
 interface GameListItemProps {
-    gameName: string;
-    gameImage?: string;
+    game: IGame;
     variants: Variants;
 }
 
-const GameListItem = ({ gameName, gameImage, variants }: GameListItemProps) => {
+const GameListItem = ({ game, variants }: GameListItemProps) => {
     return (
         <motion.div
             variants={variants}
@@ -19,12 +19,14 @@ const GameListItem = ({ gameName, gameImage, variants }: GameListItemProps) => {
                     <div
                         className="w-[70px] h-[80px] rounded-xl bg-center bg-cover"
                         style={{
-                            backgroundImage: `url(${gameImage})`,
+                            backgroundImage: `url(${
+                                game.background_image || defaultImg
+                            })`,
                         }}
                     ></div>
                     <div className="max-w-[220px] flex-1 self-stretch flex flex-col justify-center gap-2.5">
-                        <span>{gameName}</span>
-                        <span>{generateRandomPrice()}</span>
+                        <span>{game.name}</span>
+                        <span>${game.price}</span>
                     </div>
                 </motion.div>
             </CLink>

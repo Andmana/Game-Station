@@ -1,5 +1,11 @@
 import { IGame } from "../types/IGame";
 
+import img1 from "../assets/images/1.jpg";
+import img2 from "../assets/images/2.jpg";
+import img3 from "../assets/images/3.jpg";
+import img4 from "../assets/images/4.jpg";
+import img5 from "../assets/images/5.jpg";
+
 export const dummyGames: IGame[] = [
     {
         id: 3498,
@@ -13,8 +19,7 @@ export const dummyGames: IGame[] = [
                 slug: "action",
             },
         ],
-        background_image:
-            "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
+        background_image: img1,
         platforms: [
             {
                 id: 1,
@@ -37,6 +42,7 @@ export const dummyGames: IGame[] = [
             name: "Mature",
             slug: "mature",
         },
+        price: 10.0,
     },
     {
         id: 3328,
@@ -55,8 +61,7 @@ export const dummyGames: IGame[] = [
                 slug: "role-playing-games-rpg",
             },
         ],
-        background_image:
-            "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg",
+        background_image: img2,
         platforms: [
             {
                 id: 1,
@@ -89,6 +94,7 @@ export const dummyGames: IGame[] = [
             name: "Mature",
             slug: "mature",
         },
+        price: 123.213,
     },
     {
         id: 4200,
@@ -107,8 +113,7 @@ export const dummyGames: IGame[] = [
                 slug: "puzzle",
             },
         ],
-        background_image:
-            "https://media.rawg.io/media/games/2ba/2bac0e87cf45e5b508f227d281c9252a.jpg",
+        background_image: img3,
         platforms: [
             {
                 id: 1,
@@ -141,6 +146,7 @@ export const dummyGames: IGame[] = [
             name: "Everyone 10+",
             slug: "everyone-10-plus",
         },
+        price: 100.0,
     },
     {
         id: 4291,
@@ -154,8 +160,8 @@ export const dummyGames: IGame[] = [
                 slug: "shooter",
             },
         ],
-        background_image:
-            "https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
+        background_image: img4,
+
         platforms: [
             {
                 id: 1,
@@ -183,6 +189,7 @@ export const dummyGames: IGame[] = [
             name: "Mature",
             slug: "mature",
         },
+        price: 42.12,
     },
     {
         id: 5286,
@@ -196,8 +203,8 @@ export const dummyGames: IGame[] = [
                 slug: "action",
             },
         ],
-        background_image:
-            "https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg",
+        background_image: img5,
+
         platforms: [
             {
                 id: 1,
@@ -225,5 +232,6 @@ export const dummyGames: IGame[] = [
             name: "Mature",
             slug: "mature",
         },
+        price: 100.12,
     },
 ];

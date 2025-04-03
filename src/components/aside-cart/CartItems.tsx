@@ -6,7 +6,6 @@ import closeImage from "../../assets/images/icon-close.svg";
 
 import { SPRING_OPTIONS } from "../common/modules";
 import { IGame } from "../../types/IGame";
-import generateRandomPrice from "../../utils/randomPrice";
 
 interface CartItemsProps {
     cartItems: IGame[];
@@ -51,7 +50,7 @@ const CartItems = ({ cartItems, removeCartItem }: CartItemsProps) => {
                                 <span className="text-[1.1rem] font-semibold">
                                     {item.name}
                                 </span>
-                                <span>{generateRandomPrice()}</span>
+                                <span>${item.price}</span>
                             </div>
                         </Link>
                     </motion.div>

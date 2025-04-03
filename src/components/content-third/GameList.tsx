@@ -55,8 +55,7 @@ const GameList = ({ isCarousel = false, genre, games }: GameListProps) => {
                 {games.map((item) => (
                     <GameListItem
                         key={item.id}
-                        gameName={item.name}
-                        gameImage={item.background_image}
+                        game={item}
                         variants={itemVariants}
                     />
                 ))}
