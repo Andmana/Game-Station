@@ -1,5 +1,11 @@
+import ShopNav from "../../components/shop-nav";
+
 const Shop = () => {
-    return <></>;
+    return (
+        <>
+            <ShopNav />
+        </>
+    );
 };
 
 export default Shop;
