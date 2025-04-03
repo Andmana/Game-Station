@@ -1,12 +1,8 @@
+import { IGame } from "../../types/IGame";
 import GameList from "./GameList";
-import { CarouselData } from "./ThirdContent";
 
-interface CarouselItemsProps {
-    carouselData: unknown;
-}
-
-const CarouselItems = ({ carouselData }: CarouselItemsProps) => {
-    const data = carouselData as CarouselData[];
+const CarouselItems = ({ carouselData }: { carouselData: unknown }) => {
+    const data = carouselData as { name: string; games: IGame[] }[];
     return (
         <>
             {data.map((item, index) => (

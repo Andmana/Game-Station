@@ -12,6 +12,7 @@ const CLink = ({ to, children }: NavigationLinkProps) => {
     return (
         <motion.div {...transitionConfig}>
             <Link
+                draggable={false}
                 to={to}
                 className="flex items-center justify-center gap-1.5 font-semibold py-1"
             >
