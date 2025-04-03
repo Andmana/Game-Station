@@ -13,7 +13,7 @@ import { IGame } from "../../types/IGame";
 import { getUpComingGames } from "../../services/AllServices";
 
 const SecondContent = () => {
-    const useMock = false;
+    const useMock = true;
 
     const containerRef = useRef(null);
     const contentRef = useRef(null);

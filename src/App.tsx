@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
-import Nav from "./components/nav";
 import { useState } from "react";
-import upcomingGames from "./components/carousel/dummy";
 import { AnimatePresence } from "framer-motion";
+
+import Nav from "./components/nav";
 import AsideCart from "./components/aside-cart";
+import { dummyGames } from "./utils/dummy";
 
 function App() {
     const [isCartVisible, setIsCardVisible] = useState(false);
-    const [cartItems, SetCartItems] = useState([...upcomingGames]);
+    const [cartItems, SetCartItems] = useState([...dummyGames]);
 
     const handleCartState = () => [setIsCardVisible((prev: boolean) => !prev)];
 

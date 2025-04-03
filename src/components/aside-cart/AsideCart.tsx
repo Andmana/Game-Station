@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
 import { SPRING_OPTIONS } from "../common/modules";
+
 import CartItems from "./CartItems";
 import CButton from "../common/CButton";
-
-interface CartItem {
-    id: number | string;
-    title: string;
-    image: string;
-}
+import { IGame } from "../../types/IGame";
 
 interface AsideCartProps {
     isCartVisible: boolean;
-    cartItems: CartItem[];
+    cartItems: IGame[];
     handleCartState?: () => void;
     removeCartItem: (id: number | string) => void;
     clearCartItems: () => void;

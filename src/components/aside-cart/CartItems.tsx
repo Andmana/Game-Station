@@ -1,18 +1,15 @@
-import { AnimatePresence, motion } from "framer-motion";
-import generateRandomPrice from "../../utils/randomPrice";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+
 import CButton from "../common/CButton";
 import closeImage from "../../assets/images/icon-close.svg";
-import { SPRING_OPTIONS } from "../common/modules";
 
-interface CartItem {
-    id: number | string;
-    title: string;
-    image: string;
-}
+import { SPRING_OPTIONS } from "../common/modules";
+import { IGame } from "../../types/IGame";
+import generateRandomPrice from "../../utils/randomPrice";
 
 interface CartItemsProps {
-    cartItems: CartItem[];
+    cartItems: IGame[];
     removeCartItem: (id: number | string) => void;
 }
 
@@ -47,12 +44,12 @@ const CartItems = ({ cartItems, removeCartItem }: CartItemsProps) => {
                             <div
                                 className="w-[80px] h-[100px] rounded-md bg-center bg-cover"
                                 style={{
-                                    backgroundImage: `url(${item.image})`,
+                                    backgroundImage: `url(${item.background_image})`,
                                 }}
                             ></div>
                             <div className="flex-1 self-stretch flex flex-col justify-center gap-2.5 text-end">
                                 <span className="text-[1.1rem] font-semibold">
-                                    {item.title}
+                                    {item.name}
                                 </span>
                                 <span>{generateRandomPrice()}</span>
                             </div>
