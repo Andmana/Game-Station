@@ -4,7 +4,7 @@ import { motion, Variants } from "framer-motion";
 
 interface GameListItemProps {
     gameName: string;
-    gameImage: string;
+    gameImage?: string;
     variants: Variants;
 }
 

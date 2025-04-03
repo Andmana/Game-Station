@@ -8,17 +8,9 @@ import CarouselItems from "./CarouselItems";
 import Loading from "../common/Loading";
 import ErrorPage from "../../pages/ErrorPage";
 
-import { dummyData } from "./dummy";
-import { Game } from "../../types/game";
-import { getUpcomingGames } from "../../services/requests/apiRequest";
-
-const mockApi = async () => {
-    return new Promise<Game[]>((resolve) => {
-        setTimeout(() => {
-            resolve(dummyData);
-        }, 5000);
-    });
-};
+import { mockGetMultipleGames } from "../../services/MockServices";
+import { IGame } from "../../types/IGame";
+import { getUpComingGames } from "../../services/AllServices";
 
 const SecondContent = () => {
     const useMock = false;
@@ -26,9 +18,9 @@ const SecondContent = () => {
     const containerRef = useRef(null);
     const contentRef = useRef(null);
 
-    const { data, error, isLoading } = useQuery<Game[], Error>({
+    const { data, error, isLoading } = useQuery<IGame[], Error>({
         queryKey: ["games"], // query key
-        queryFn: useMock ? mockApi : getUpcomingGames,
+        queryFn: useMock ? mockGetMultipleGames : getUpComingGames,
     });
 
     const { scrollYProgress } = useScroll({
@@ -76,13 +68,11 @@ const SecondContent = () => {
                         style={{ rotateX: rotateXContent, opacity }}
                         className="absolute w-full h-full transform origin-bottom translate-z-3 p-1"
                     >
-                        {data && data.length > 0 && (
-                            <Carousel
-                                CarouselItems={CarouselItems}
-                                itemsCount={data.length}
-                                carouselData={data}
-                            />
-                        )}
+                        <Carousel
+                            CarouselItems={CarouselItems}
+                            itemsCount={data?.length}
+                            carouselData={data}
+                        />
                     </motion.div>
                 </div>
             )}

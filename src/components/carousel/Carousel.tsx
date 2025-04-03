@@ -36,6 +36,7 @@ const Carousel = ({
         }, AUTO_DELAY);
 
         return () => clearInterval(intervalRef);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onDragEnd = () => {

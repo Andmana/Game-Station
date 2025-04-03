@@ -9,50 +9,18 @@ import Loading from "../common/Loading";
 import Carousel from "../carousel";
 import CarouselItems from "./CarouselItems";
 
-import { Game } from "../../types/game";
-import { getGames } from "../../services/requests/apiRequest";
-
-export interface CarouselData {
-    name: string;
-    games: Game[];
-}
-
-import { dummyData } from "../content-second/dummy";
-const mockApi = async () => {
-    return new Promise<CarouselData[]>((resolve) => {
-        setTimeout(() => {
-            resolve([
-                { name: "Action", games: dummyData },
-                { name: "Strategy", games: dummyData },
-                { name: "Adventure", games: dummyData },
-            ]);
-        }, 500);
-    });
-};
-
-const fetchTopGames = async () => {
-    const genres = ["Action", "RPG", "Shooter"];
-    const genresSlug = ["action", "role-playing-games-rpg", "shooter"];
-    const gamePromises = genresSlug.map((slug) =>
-        getGames({
-            genres: slug,
-            ordering: "-added",
-            page_size: 5,
-        })
-    );
-
-    const gameResults = await Promise.all(gamePromises);
-    return gameResults.map((games, index) => ({
-        name: genres[index],
-        games,
-    }));
-};
+import { IGame } from "../../types/IGame";
+import { mockGetTopGamesByGenre } from "../../services/MockServices";
+import { getTopGamesByGenre } from "../../services/AllServices";
 
 const ThirdContent = () => {
     const isMock = true;
-    const { data, error, isLoading } = useQuery<CarouselData[], Error>({
+    const { data, error, isLoading } = useQuery<
+        { name: string; games: IGame[] }[],
+        Error
+    >({
         queryKey: ["topByGenres"], // query key
-        queryFn: isMock ? mockApi : fetchTopGames,
+        queryFn: isMock ? mockGetTopGamesByGenre : getTopGamesByGenre,
     });
 
     if (error) return <ErrorPage />;

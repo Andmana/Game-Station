@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 import { SPRING_OPTIONS } from "../common/modules";
 import { platformIcons } from "../../utils/platformIcons";
 import { formatStringToReadableDate } from "../../utils/formatDate";
-import { Game } from "../../types/game";
+import { IGame } from "../../types/IGame";
 
 interface CarouselItemsProps {
     currentIdx: number;
-    carouselData: unknown;
+    carouselData?: unknown;
 }
 
 const CarouselItems = ({ currentIdx, carouselData }: CarouselItemsProps) => {
-    const data = carouselData as Game[];
+    const data = carouselData as IGame[];
     return (
         <>
             {data.map((item) => (
@@ -31,7 +31,7 @@ const CarouselItems = ({ currentIdx, carouselData }: CarouselItemsProps) => {
                     <div className="w-full z-10 flex flex-col justify-center items-center text-center main-padding bg-custom gap-1 pt-16 pointer-events-none">
                         <h2 className="!text-2xl mb-1">{item.name}</h2>
                         <div className="flex gap-2">
-                            {item.platforms.map((item, index) => {
+                            {item.platforms?.map((item, index) => {
                                 if (!(item.slug in platformIcons)) return;
                                 return (
                                     <img
@@ -44,10 +44,11 @@ const CarouselItems = ({ currentIdx, carouselData }: CarouselItemsProps) => {
                             })}
                         </div>
                         <span className="text-xl font-semibold">
-                            {item.genres.map((genre) => genre.name).join(", ")}
+                            {item.genres?.map((genre) => genre.name).join(", ")}
                         </span>
                         <span className="text-xl font-semibold">
-                            {formatStringToReadableDate(item.released)}
+                            {item.released &&
+                                formatStringToReadableDate(item.released)}
                         </span>
                     </div>
                 </motion.div>

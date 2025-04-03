@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import GameListItem from "./GameListItem";
-import { Game } from "../../types/game";
+import { IGame } from "../../types/IGame";
 
 const itemVariants = {
     hidden: { opacity: 0, translateY: -50 },
@@ -35,7 +35,7 @@ const listVariants = {
 interface GameListProps {
     isCarousel?: boolean;
     genre: string;
-    games: Game[];
+    games: IGame[];
 }
 
 const GameList = ({ isCarousel = false, genre, games }: GameListProps) => {
