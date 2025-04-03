@@ -3,7 +3,7 @@ import NavItem from "./NavItem";
 
 const menuItems = [
     { to: "/", label: "Random Game", customClass: "md:-translate-x-[20px]" },
-    { to: "/", label: "Go to Shop", customClass: "md:translate-x-[60px]" },
+    { to: "/shop", label: "Go to Shop", customClass: "md:translate-x-[60px]" },
     { to: "/", label: "All Time Top", customClass: "md:translate-x-[100px]" },
     {
         to: "/",

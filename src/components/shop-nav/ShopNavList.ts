@@ -4,7 +4,7 @@ import { IShopNavGroup } from "../../types/IShopNav";
 const date = new Date();
 const prevYear = date.getFullYear() - 1;
 
-export const ShopNavItems: IShopNavGroup[] = [
+export const ShopNavList: IShopNavGroup[] = [
     {
         name: "New Releases",
         shopNavs: [
@@ -101,56 +101,56 @@ export const ShopNavItems: IShopNavGroup[] = [
         name: "Genres",
         shopNavs: [
             {
-                id: 1,
+                id: 0,
                 name: "Action",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 2,
+                id: 1,
                 name: "Strategy",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 3,
+                id: 2,
                 name: "RPG",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 4,
+                id: 3,
                 name: "Shooter",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 5,
+                id: 4,
                 name: "Adventure",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 6,
+                id: 5,
                 name: "Puzzle",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 7,
+                id: 6,
                 name: "Racing",
                 icon: iconDefault,
                 redirectTo: "/",
                 hasSort: true,
             },
             {
-                id: 8,
+                id: 7,
                 name: "Sports",
                 icon: iconDefault,
                 redirectTo: "/",

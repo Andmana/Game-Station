@@ -36,7 +36,7 @@ h3 {
 }
 
 .main-padding {
-    padding: 1.5rem 2.5rem 1rem;
+    padding: 1rem 2.2rem 1rem;
 }
 
 .bg-custom {
@@ -52,7 +52,7 @@ h3 {
     }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 640px) and (max-width: 723px) {
     h1 {
         font-size: 1.4rem;
     }
@@ -67,7 +67,7 @@ h3 {
     }
 }
 
-@media (min-width: 724px) {
+@media (min-width: 724px) and (max-width: 1023px) {
     h1 {
         font-size: 1.5rem;
     }
