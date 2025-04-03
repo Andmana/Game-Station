@@ -1,11 +1,11 @@
-import { IGameDetailResponse, IGamesResponse } from "../types/IApiResponse";
-import { mappingIGame, mappingIGameDetailed } from "../utils/mapping";
-import { IGame } from "../types/IGame";
+import { IGameDetailResponse, IGamesResponse } from "../../types/IApiResponse";
+import { mappingIGame, mappingIGameDetailed } from "../../utils/mapping";
+import { IGame } from "../../types/IGame";
 import { fetchData } from "./ApiService";
 import {
     getCurrentDateIsoString,
     getOneYearLaterDateIsoString,
-} from "../utils/formatDate";
+} from "../../utils/formatDate";
 
 // Function to fetch game details by ID
 export const getGameById = async (GameId: number): Promise<IGame> => {

@@ -10,8 +10,8 @@ import Carousel from "../carousel";
 import CarouselItems from "./CarouselItems";
 
 import { IGame } from "../../types/IGame";
-import { mockGetTopGamesByGenre } from "../../services/MockServices";
-import { getTopGamesByGenre } from "../../services/AllServices";
+import { mockGetTopGamesByGenre } from "../../services/api/MockServices";
+import { getTopGamesByGenre } from "../../services/api/AllServices";
 
 const ThirdContent = () => {
     const useMock = true;

@@ -8,9 +8,9 @@ import CarouselItems from "./CarouselItems";
 import Loading from "../common/Loading";
 import ErrorPage from "../../pages/ErrorPage";
 
-import { mockGetMultipleGames } from "../../services/MockServices";
+import { mockGetMultipleGames } from "../../services/api/MockServices";
 import { IGame } from "../../types/IGame";
-import { getUpComingGames } from "../../services/AllServices";
+import { getUpComingGames } from "../../services/api/AllServices";
 
 const SecondContent = () => {
     const useMock = true;

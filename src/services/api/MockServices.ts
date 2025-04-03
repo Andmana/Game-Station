@@ -1,5 +1,5 @@
-import { IGame } from "../types/IGame";
-import { dummyGames } from "../utils/dummy";
+import { IGame } from "../../types/IGame";
+import { dummyGames } from "../../utils/dummy";
 
 export const mockGetMultipleGames = async () => {
     return new Promise<IGame[]>((resolve) => {
