@@ -6,7 +6,7 @@ import { SPRING_OPTIONS } from "../common/modules";
 interface CarouselProps {
     CarouselItems: ComponentType<{ currentIdx: number; carouselData: unknown }>;
     itemsCount?: number;
-    carouselData: unknown;
+    carouselData?: unknown;
 }
 
 const ONE_SECOND = 1000;
