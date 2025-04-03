@@ -11,5 +11,5 @@ export const getFromLocalStorage = (): ILocalStorage => {
 };
 
 export const saveToLocalStorage = (data: ILocalStorage) => {
-    localStorage.setItem("myToDoList", JSON.stringify(data));
+    localStorage.setItem("myGameStation", JSON.stringify(data));
 };
