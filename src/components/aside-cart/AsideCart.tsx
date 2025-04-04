@@ -28,6 +28,7 @@ const AsideCart = ({
             }}
             style={{ pointerEvents: isCartVisible ? "auto" : "none" }}
             className="fixed z-20 w-full h-auto top-0 left-0 bg-[#0000006a] flex"
+            aria-hidden={isCartVisible ? false : true}
         >
             {/* Blank Space */}
             <div

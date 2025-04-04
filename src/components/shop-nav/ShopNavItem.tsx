@@ -39,11 +39,11 @@ const ShopNavItem = ({ navIitem }: ShopNavItemProps) => {
         >
             <a
                 href={navIitem.redirectTo}
-                className="w-full flex items-center gap-2 bg-[#242424]"
+                className="w-full flex items-center gap-2"
             >
                 <HoverableIcon isHovered={isHovered} iconSrc={navIitem.icon} />
                 <span
-                    className="font-semibold origin-left text-xl"
+                    className="font-semibold origin-left text-xl flex-1 h-full"
                     style={{ scale: isHovered ? 1.1 : 1 }}
                 >
                     {navIitem.name}
@@ -67,10 +67,7 @@ export const ExtendNavItem = ({
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
         >
-            <button
-                onClick={setIsMinimize}
-                className="w-full flex items-center gap-2 bg-[#242424]"
-            >
+            <button onClick={setIsMinimize} className="flex items-center gap-2">
                 <HoverableIcon
                     isHovered={isHovered}
                     iconSrc={isMinimize ? iconDown : iconUp}
