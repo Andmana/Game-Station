@@ -15,7 +15,7 @@ const Shop = () => {
     const filters = useLoaderData() as string;
 
     return (
-        <div className="flex main-padding">
+        <div className="flex gap-8 main-padding">
             <ShopNav />
             <GamesGalery filters={filters} />
         </div>
