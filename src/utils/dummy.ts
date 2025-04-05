@@ -19,6 +19,23 @@ export const dummyGames: IGame[] = [
                 slug: "action",
             },
         ],
+        tags: [
+            {
+                id: 40833,
+                name: "Captions available",
+                slug: "captions-available",
+            },
+            {
+                id: 40834,
+                name: "Commentary available",
+                slug: "commentary-available",
+            },
+            {
+                id: 87,
+                name: "Science",
+                slug: "science",
+            },
+        ],
         background_image: img1,
         platforms: [
             {
@@ -59,6 +76,23 @@ export const dummyGames: IGame[] = [
                 id: 5,
                 name: "RPG",
                 slug: "role-playing-games-rpg",
+            },
+        ],
+        tags: [
+            {
+                id: 75,
+                name: "Local Co-Op",
+                slug: "local-co-op",
+            },
+            {
+                id: 11669,
+                name: "stats",
+                slug: "stats",
+            },
+            {
+                id: 40852,
+                name: "Steam Workshop",
+                slug: "steam-workshop",
             },
         ],
         background_image: img2,
@@ -113,6 +147,23 @@ export const dummyGames: IGame[] = [
                 slug: "puzzle",
             },
         ],
+        tags: [
+            {
+                id: 4,
+                name: "Funny",
+                slug: "funny",
+            },
+            {
+                id: 189,
+                name: "Female Protagonist",
+                slug: "female-protagonist",
+            },
+            {
+                id: 123,
+                name: "Comedy",
+                slug: "comedy",
+            },
+        ],
         background_image: img3,
         platforms: [
             {
@@ -160,6 +211,23 @@ export const dummyGames: IGame[] = [
                 slug: "shooter",
             },
         ],
+        tags: [
+            {
+                id: 32,
+                name: "Sci-fi",
+                slug: "sci-fi",
+            },
+            {
+                id: 30,
+                name: "FPS",
+                slug: "fps",
+            },
+            {
+                id: 9,
+                name: "Online Co-Op",
+                slug: "online-co-op",
+            },
+        ],
         background_image: img4,
 
         platforms: [
@@ -201,6 +269,23 @@ export const dummyGames: IGame[] = [
                 id: 4,
                 name: "Action",
                 slug: "action",
+            },
+        ],
+        tags: [
+            {
+                id: 7808,
+                name: "steam-trading-cards",
+                slug: "steam-trading-cards",
+            },
+            {
+                id: 18,
+                name: "Co-op",
+                slug: "co-op",
+            },
+            {
+                id: 118,
+                name: "Story Rich",
+                slug: "story-rich",
             },
         ],
         background_image: img5,

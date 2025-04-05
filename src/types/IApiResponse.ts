@@ -15,7 +15,7 @@ export interface IGameDetailResponse {
     description: string;
     released?: string;
     background_image?: string;
-    genres?: IGenres;
+    genres?: IGenres[];
     parent_platforms?: IParentPlatform[];
     developers?: IDevelopers[];
     publishers?: IPublisher[];
@@ -28,8 +28,8 @@ export interface IGameResultResponse {
     name: string;
     slug: string;
     released?: string;
-    genres?: IGenres;
-    tags?: ITags;
+    genres?: IGenres[];
+    tags?: ITags[];
     background_image?: string;
     parent_platforms?: IParentPlatform[];
     esrb_rating?: IContentRating;
