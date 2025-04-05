@@ -5,6 +5,7 @@ import MediaQuery from "react-responsive";
 import CButton from "../common/CButton";
 import iconClose from "../../assets/images/icon-close.svg";
 import iconOpen from "../../assets/images/icon-open.svg";
+import { Link } from "react-router-dom";
 
 const HeaderLink = ({ label, to }: { label: string; to: string }) => {
     return (
@@ -12,7 +13,7 @@ const HeaderLink = ({ label, to }: { label: string; to: string }) => {
             className="text-2xl font-black origin-left"
             whileHover={{ scale: 1.1 }}
         >
-            <a href={to}>{label}</a>
+            <Link to={to}>{label}</Link>
         </motion.div>
     );
 };
@@ -32,7 +33,7 @@ const ShopNav = () => {
 
 const NavMedium = () => {
     return (
-        <aside className="w-[280px] h-screen main-padding !pt-[85px] !pb-[45px] bg-black">
+        <aside className="w-[300px] h-screen main-padding !pt-[85px] !pb-[45px] bg-black">
             <nav
                 style={{ scrollbarWidth: "none" }}
                 className="w-full h-full z-30 overflow-auto flex flex-col gap-6 sm:text-white"

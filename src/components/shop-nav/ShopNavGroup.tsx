@@ -13,7 +13,7 @@ const ShopNavGroup = ({ navGroup }: ShopNavGroupProps) => {
             <h2 className="mb-2 !text-2xl">{navGroup.name}</h2>
             {navGroup.shopNavs.map((navItem) => {
                 if (isMinimize && navItem.id >= 3) return;
-                return <ShopNavItem navIitem={navItem} key={navItem.id} />;
+                return <ShopNavItem navItem={navItem} key={navItem.id} />;
             })}
             {navGroup.shopNavs.length > 3 && (
                 <ExtendNavItem

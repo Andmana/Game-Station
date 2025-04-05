@@ -3,9 +3,10 @@ import { IShopNav } from "../../types/IShopNav";
 import { useState } from "react";
 import iconUp from "../../assets/images/icon-up.svg";
 import iconDown from "../../assets/images/icon-down.svg";
+import { NavLink } from "react-router-dom";
 
 interface ShopNavItemProps {
-    navIitem: IShopNav;
+    navItem: IShopNav;
 }
 
 const HoverableIcon = ({
@@ -29,26 +30,31 @@ const HoverableIcon = ({
     </motion.div>
 );
 
-const ShopNavItem = ({ navIitem }: ShopNavItemProps) => {
+const ShopNavItem = ({ navItem }: ShopNavItemProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
         <motion.li
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
+            className="bg-black sm:bg-white"
         >
-            <a
-                href={navIitem.redirectTo}
-                className="w-full flex items-center gap-2"
+            <NavLink
+                to={"/shop" + navItem.redirectTo}
+                className="w-full flex items-center gap-2 bg-white sm:bg-black"
+                style={({ isActive }) => ({
+                    paddingLeft: isActive ? "10px" : "0px",
+                    transform: isActive ? "translateX(-10px)" : "translateX(0)", // Include padding in width
+                })}
             >
-                <HoverableIcon isHovered={isHovered} iconSrc={navIitem.icon} />
+                <HoverableIcon isHovered={isHovered} iconSrc={navItem.icon} />
                 <span
                     className="font-semibold origin-left text-xl flex-1 h-full"
                     style={{ scale: isHovered ? 1.1 : 1 }}
                 >
-                    {navIitem.name}
+                    {navItem.name}
                 </span>
-            </a>
+            </NavLink>
         </motion.li>
     );
 };
