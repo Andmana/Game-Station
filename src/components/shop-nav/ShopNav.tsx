@@ -33,7 +33,7 @@ const ShopNav = () => {
 
 const NavMedium = () => {
     return (
-        <aside className="w-[300px] h-screen main-padding !pt-[85px] !pb-[45px] bg-black">
+        <aside className="min-w-[200px] w-[30%] max-w-[250px] h-full !pt-[85px] !pb-[45px] relative">
             <nav
                 style={{ scrollbarWidth: "none" }}
                 className="w-full h-full z-30 overflow-auto flex flex-col gap-6 sm:text-white"

@@ -15,7 +15,7 @@ const Shop = () => {
     const filters = useLoaderData() as string;
 
     return (
-        <div className="flex">
+        <div className="flex main-padding">
             <ShopNav />
             <GamesGalery filters={filters} />
         </div>

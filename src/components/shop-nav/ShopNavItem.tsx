@@ -37,11 +37,11 @@ const ShopNavItem = ({ navItem }: ShopNavItemProps) => {
         <motion.li
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="bg-black sm:bg-white"
+            className="bg-[#242424] sm:bg-white"
         >
             <NavLink
                 to={"/shop" + navItem.redirectTo}
-                className="w-full flex items-center gap-2 bg-white sm:bg-black"
+                className="w-full flex items-center gap-2 bg-white sm:bg-[#242424]"
                 style={({ isActive }) => ({
                     paddingLeft: isActive ? "10px" : "0px",
                     transform: isActive ? "translateX(-10px)" : "translateX(0)", // Include padding in width
@@ -49,7 +49,7 @@ const ShopNavItem = ({ navItem }: ShopNavItemProps) => {
             >
                 <HoverableIcon isHovered={isHovered} iconSrc={navItem.icon} />
                 <span
-                    className="font-semibold origin-left text-xl flex-1 h-full"
+                    className="font-semibold origin-left text-[1.1rem] flex-1 h-full"
                     style={{ scale: isHovered ? 1.1 : 1 }}
                 >
                     {navItem.name}
@@ -79,7 +79,7 @@ export const ExtendNavItem = ({
                     iconSrc={isMinimize ? iconDown : iconUp}
                 />
                 <span
-                    className="font-semibold origin-left text-xl"
+                    className="font-semibold origin-left text-[1.1rem]"
                     style={{ scale: isHovered ? 1.1 : 1 }}
                 >
                     {isMinimize ? "Show more" : "Hide"}
