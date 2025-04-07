@@ -28,6 +28,7 @@ const Shop = () => {
                 header={name}
                 hasSort={hasSort}
                 queryParams={queryParams}
+                isReleased={filters != "upcoming"}
             />
         </div>
     );

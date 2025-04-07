@@ -38,7 +38,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: false,
         queryParams: {
             ordering: "-added",
-            dates: `${getCurrentDateIsoString()},${getYearStartDateIsoString()}`,
+            dates: `${getYearStartDateIsoString()},${getCurrentDateIsoString()}`,
         },
     },
     "popular-in-prev-year": {
@@ -61,7 +61,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
-            "parent-platforms": "1",
+            parent_platforms: "1",
         },
     },
     playstation: {
@@ -69,7 +69,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
-            "parent-platforms": "2",
+            parent_platforms: "2",
         },
     },
     xbox: {
@@ -77,7 +77,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
-            "parent-platforms": "3",
+            parent_platforms: "3",
         },
     },
     nintendo: {
@@ -85,7 +85,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
-            "parent-platforms": "7",
+            parent_platforms: "7",
         },
     },
     android: {
@@ -93,7 +93,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
-            "parent-platforms": "8",
+            parent_platforms: "8",
         },
     },
     ios: {
@@ -101,7 +101,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
-            "parent-platforms": "4",
+            parent_platforms: "4",
         },
     },
     action: {
