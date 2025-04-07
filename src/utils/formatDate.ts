@@ -19,8 +19,29 @@ export const getCurrentDateIsoString = (): string => {
     return formatDateToIsoString(new Date());
 };
 
+export const getDate30daysAgoisoString = (): string => {
+    const currentDate = new Date();
+    const pastDate = new Date(currentDate);
+
+    pastDate.setDate(currentDate.getDate() - 30);
+    return formatDateToIsoString(pastDate);
+};
+
 export const getOneYearLaterDateIsoString = (): string => {
     const oneYearLater = new Date();
     oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
     return formatDateToIsoString(oneYearLater);
+};
+
+export const getFiveYearLaterDateIsoString = (): string => {
+    const oneYearLater = new Date();
+    oneYearLater.setFullYear(oneYearLater.getFullYear() + 5);
+    return formatDateToIsoString(oneYearLater);
+};
+
+export const getYearStartDateIsoString = (): string => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const yearStartDate = new Date(Date.UTC(year, 0, 1)); // January 1st at 00:00:00 UTC
+    return formatDateToIsoString(yearStartDate);
 };
