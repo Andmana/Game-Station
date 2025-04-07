@@ -7,7 +7,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
     if (typeof filters === "string") {
         return filters;
     } else {
-        return "";
+        return "default";
     }
 }
 

@@ -20,7 +20,7 @@ export const ShopNavList: IShopNavGroup[] = [
                 name: "Upcoming",
                 icon: iconDefault,
                 redirectTo: "/upcoming",
-                hasSort: false,
+                hasSort: true,
             },
         ],
     },
@@ -38,7 +38,7 @@ export const ShopNavList: IShopNavGroup[] = [
                 id: 1,
                 name: `Popular in ${prevYear}`,
                 icon: iconDefault,
-                redirectTo: `/popular-${prevYear}`,
+                redirectTo: `/popular-in-prev-year`,
                 hasSort: false,
             },
             {
