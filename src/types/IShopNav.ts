@@ -3,7 +3,6 @@ export interface IShopNav {
     name: string;
     icon: string;
     redirectTo: string;
-    hasSort: boolean;
 }
 
 export interface IShopNavGroup {
