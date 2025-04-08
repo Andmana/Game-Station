@@ -12,17 +12,24 @@ interface ShopNavItemProps {
 const HoverableIcon = ({
     isHovered,
     iconSrc,
+    isActive,
 }: {
     isHovered: boolean;
     iconSrc: string;
+    isActive: boolean;
 }) => (
     <motion.div
         className="w-10 h-10 p-2 rounded-xl"
-        animate={{ backgroundColor: isHovered ? "#fff" : "#171717" }}
+        animate={{
+            backgroundColor: isHovered || isActive ? "#fff" : "#171717",
+        }}
     >
         <img
             style={{
-                filter: isHovered ? "brightness(0) saturate(100%)" : "none",
+                filter:
+                    isHovered || isActive
+                        ? "brightness(0) saturate(100%)"
+                        : "none",
             }}
             src={iconSrc}
             alt=""
@@ -47,7 +54,13 @@ const ShopNavItem = ({ navItem }: ShopNavItemProps) => {
                     transform: isActive ? "translateX(-10px)" : "translateX(0)", // Include padding in width
                 })}
             >
-                <HoverableIcon isHovered={isHovered} iconSrc={navItem.icon} />
+                <HoverableIcon
+                    isHovered={isHovered}
+                    iconSrc={navItem.icon}
+                    isActive={
+                        window.location.pathname == "/shop" + navItem.redirectTo
+                    }
+                />
                 <span
                     className="font-semibold origin-left text-[1.1rem] flex-1 h-full"
                     style={{ scale: isHovered ? 1.1 : 1 }}

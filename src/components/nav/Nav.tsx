@@ -40,6 +40,12 @@ const Nav = ({ handleCartState }: NavProps) => {
                 duration: 0.6,
                 staggerChildren: 0.05,
             }}
+            style={{
+                backgroundColor:
+                    window.location.pathname === "/shop"
+                        ? "#242424"
+                        : "transparent",
+            }}
             className="fixed z-10 isolate w-full top-0 left-0 main-padding nav-shadow flex justify-between items-center gap-2.5"
         >
             {/* Hero */}
