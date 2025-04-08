@@ -3,7 +3,13 @@ import { IGame } from "../../types/IGame";
 import { motion } from "framer-motion";
 import { platformIcons } from "../../utils/platformIcons";
 
-const GridItem = ({ game }: { game: IGame }) => {
+const GridItem = ({
+    game,
+    isReleased,
+}: {
+    game: IGame;
+    isReleased?: boolean;
+}) => {
     const [isHovered, setIsHovered] = useState(false);
     return (
         <motion.article
@@ -41,7 +47,7 @@ const GridItem = ({ game }: { game: IGame }) => {
                                 );
                             })}
                         </div>
-                        <span>+ Chart</span>
+                        {isReleased && <span>+ Chart</span>}
                     </div>
                     <div className="h-full flex items-center">
                         <h2 className="text-2xl">{game.name}</h2>

@@ -6,7 +6,7 @@ interface GamesGridPops {
     isReleased?: boolean;
 }
 
-const GamesGrid = ({ games, isReleased = true }: GamesGridPops) => {
+const GamesGrid = ({ games, isReleased }: GamesGridPops) => {
     return (
         <div
             className="w-full grid gap-6"
