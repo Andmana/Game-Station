@@ -27,6 +27,7 @@ const GamesGalery = ({
     isReleased,
     handleSortOrderChange,
 }: GamesGaleryProps) => {
+    console.log("isReleased :", isReleased);
     const [gameList, setGameList] = useState<IGame[]>([]);
     const [hasNext, setHasNext] = useState<string | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);

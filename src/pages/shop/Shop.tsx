@@ -27,7 +27,7 @@ const Shop = () => {
             ..._queryParams,
             page_size: "15",
         });
-        setIsReleased(filters != "upcomming");
+        setIsReleased(filters != "upcoming");
     }, [filters]);
 
     return (

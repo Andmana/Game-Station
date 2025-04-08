@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IGame } from "../../types/IGame";
 import { motion } from "framer-motion";
 import { platformIcons } from "../../utils/platformIcons";
+import { span } from "framer-motion/client";
 
 const GridItem = ({
     game,
@@ -32,7 +33,7 @@ const GridItem = ({
                     alt="Game"
                     className="w-full h-[215px] object-center object-cover rounded-t-2xl"
                 />
-                <div className="p-4 h-[125px] flex flex-col">
+                <div className="p-4 h-[125px] flex flex-col gap-2">
                     <div className="flex justify-between items-center">
                         <div className="flex gap-2 ">
                             {game.platforms?.map((item, index) => {
@@ -47,34 +48,52 @@ const GridItem = ({
                                 );
                             })}
                         </div>
-                        {isReleased && <span>+ Chart</span>}
+                        {isReleased && (
+                            <div className="font-semibold">
+                                <span className="bg-white text-black  border-1 border-white p-1">
+                                    {" "}
+                                    $ {game.price}
+                                </span>
+                                <span className="border-1 p-1"> +Chart</span>
+                            </div>
+                        )}
                     </div>
                     <div className="h-full flex items-center">
                         <h2 className="text-2xl">{game.name}</h2>
                     </div>
                 </div>
                 <div className="px-4 pb-8 flex flex-col gap-2">
-                    <ItemDetail
-                        label="Rating"
-                        values={game.contentRating?.name}
-                    />
-                    <span className="w-full h-0.5 mt-0.5 bg-neutral-50"></span>
-                    <ItemDetail
-                        label="Genre"
-                        values={game.genres
-                            ?.map((genre) => genre.name)
-                            .join(", ")}
-                    />
+                    {game.contentRating && (
+                        <>
+                            <ItemDetail
+                                label="Rating"
+                                values={game.contentRating?.name}
+                            />
+                            <span className="w-full h-0.5 mt-0.5 bg-neutral-50"></span>
+                        </>
+                    )}
 
-                    <span className="w-full h-0.5 mt-0.5 bg-neutral-50"></span>
+                    {game.genres && (
+                        <>
+                            <ItemDetail
+                                label="Genre"
+                                values={game.genres
+                                    ?.map((genre) => genre.name)
+                                    .join(", ")}
+                            />
+                            <span className="w-full h-0.5 mt-0.5 bg-neutral-50"></span>
+                        </>
+                    )}
 
-                    <ItemDetail
-                        label="Tags"
-                        values={game.tags
-                            ?.slice(0, 5)
-                            .map((tag) => tag.name)
-                            .join(", ")}
-                    />
+                    {game.tags && (
+                        <ItemDetail
+                            label="Tags"
+                            values={game.tags
+                                ?.slice(0, 10)
+                                .map((tag) => tag.name)
+                                .join(", ")}
+                        />
+                    )}
                 </div>
             </motion.div>
         </motion.article>
