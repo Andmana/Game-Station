@@ -1,8 +1,9 @@
 import {
     IGameDetailResponse,
     IGameResultResponse,
+    IGamesResponse,
 } from "../types/IApiResponse";
-import { IGame } from "../types/IGame";
+import { IGame, IGames } from "../types/IGame";
 
 export const mappingIGame = (target: IGameResultResponse): IGame => {
     const {
@@ -57,5 +58,21 @@ export const mappingIGameDetailed = (target: IGameDetailResponse): IGame => {
         background_image,
         platforms: parent_platforms?.map((item) => item.platform),
         contentRating: esrb_rating,
+    };
+};
+
+export const mappingIGames = (target: IGamesResponse): IGames => {
+    const { count, previous, next, results } = target;
+    const mappedGames: IGame[] = [];
+    for (const item of results) {
+        const mappedGame = mappingIGame(item);
+        mappedGames.push(mappedGame);
+    }
+
+    return {
+        count,
+        previous,
+        next,
+        results: mappedGames,
     };
 };

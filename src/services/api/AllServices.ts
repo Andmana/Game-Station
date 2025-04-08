@@ -1,7 +1,11 @@
 import { IGameDetailResponse, IGamesResponse } from "../../types/IApiResponse";
-import { mappingIGame, mappingIGameDetailed } from "../../utils/mapping";
-import { IGame } from "../../types/IGame";
-import { fetchData } from "./ApiService";
+import {
+    mappingIGame,
+    mappingIGameDetailed,
+    mappingIGames,
+} from "../../utils/mapping";
+import { IGame, IGames } from "../../types/IGame";
+import { fetchData, fetchDataByUrl } from "./ApiService";
 import {
     getCurrentDateIsoString,
     getOneYearLaterDateIsoString,
@@ -33,6 +37,26 @@ export const getMultipleGames = async (
     }
 
     return results;
+};
+
+export const getPaginatedGamesByParams = async (
+    queryParams: Record<string, unknown>
+): Promise<IGamesResponse> => {
+    const responseData = await fetchData<IGamesResponse>("/games", queryParams);
+    const mappedData: IGame[] = [];
+    for (const rawData of responseData.results) {
+        const data = mappingIGame(rawData);
+        data.price = getGamePrice(data.id);
+
+        mappedData.push(data);
+    }
+    responseData.results = mappedData;
+    return responseData;
+};
+
+export const getPaginatedGamesByUrl = async (url: string): Promise<IGames> => {
+    const responseData = await fetchDataByUrl<IGamesResponse>(url);
+    return mappingIGames(responseData);
 };
 
 export const getUpComingGames = async (): Promise<IGame[]> => {

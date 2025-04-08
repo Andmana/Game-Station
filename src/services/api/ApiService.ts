@@ -23,3 +23,8 @@ export const fetchData = async <T>(
     const response = await axios.get(requestUrl);
     return response.data;
 };
+
+export const fetchDataByUrl = async <T>(url: string): Promise<T> => {
+    const response = await axios.get(url);
+    return response.data;
+};

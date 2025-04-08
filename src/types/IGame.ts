@@ -24,3 +24,10 @@ export interface IGame {
     screenshots?: IScreenshots;
     price?: number;
 }
+
+export interface IGames {
+    count: number;
+    next?: string;
+    previous?: string;
+    results: IGame[];
+}
