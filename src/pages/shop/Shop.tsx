@@ -6,18 +6,28 @@ import { useEffect, useState } from "react";
 
 const Shop = () => {
     const filters = useLoaderData() as string;
-    const { name, hasSort, queryParams: _queryParams } = queryConfig[filters];
+    const [queryParams, setQueryParams] = useState<Record<string, string>>({});
+    const [header, setHeader] = useState("");
+    const [hasSort, setHasSort] = useState(true);
+    const [isReleased, setIsReleased] = useState(true);
 
-    const [queryParams, setQueryParams] = useState({ ..._queryParams });
     const handleSortOrderChange = (order: string) => {
-        setQueryParams({ ..._queryParams, ordering: order });
+        setQueryParams({ ...queryParams, ordering: order });
     };
 
     useEffect(() => {
+        const {
+            name,
+            hasSort,
+            queryParams: _queryParams,
+        } = queryConfig[filters];
+        setHeader(name);
+        setHasSort(hasSort);
         setQueryParams({
             ..._queryParams,
             page_size: "15",
         });
+        setIsReleased(filters != "upcomming");
     }, [filters]);
 
     return (
@@ -25,10 +35,10 @@ const Shop = () => {
             <ShopNav />
             <GamesGalery
                 handleSortOrderChange={handleSortOrderChange}
-                header={name}
+                header={header}
                 hasSort={hasSort}
                 queryParams={queryParams}
-                isReleased={filters != "upcoming"}
+                isReleased={isReleased}
             />
         </div>
     );
