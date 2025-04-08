@@ -2,7 +2,6 @@ import { useState } from "react";
 import { IGame } from "../../types/IGame";
 import { motion } from "framer-motion";
 import { platformIcons } from "../../utils/platformIcons";
-import { span } from "framer-motion/client";
 
 const GridItem = ({
     game,

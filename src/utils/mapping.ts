@@ -1,3 +1,4 @@
+import { getGamePrice } from "../services/local-storage/AllServices";
 import {
     IGameDetailResponse,
     IGameResultResponse,
@@ -27,6 +28,7 @@ export const mappingIGame = (target: IGameResultResponse): IGame => {
         background_image,
         platforms: parent_platforms?.map((item) => item.platform),
         contentRating: esrb_rating,
+        price: getGamePrice(id),
     };
 };
 
@@ -58,6 +60,7 @@ export const mappingIGameDetailed = (target: IGameDetailResponse): IGame => {
         background_image,
         platforms: parent_platforms?.map((item) => item.platform),
         contentRating: esrb_rating,
+        price: getGamePrice(id),
     };
 };
 
