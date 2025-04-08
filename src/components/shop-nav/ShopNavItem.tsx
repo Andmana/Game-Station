@@ -16,7 +16,7 @@ const HoverableIcon = ({
 }: {
     isHovered: boolean;
     iconSrc: string;
-    isActive: boolean;
+    isActive?: boolean;
 }) => (
     <motion.div
         className="w-10 h-10 p-2 rounded-xl"

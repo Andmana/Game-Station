@@ -14,9 +14,8 @@ const GamesGrid = ({ games, isReleased }: GamesGridPops) => {
                 gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
             }}
         >
-            {isReleased}
             {games.map((item) => (
-                <GridItem key={item.id} game={item} />
+                <GridItem key={item.id} game={item} isReleased={isReleased} />
             ))}
         </div>
     );
