@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { getMultipleGames } from "../../services/api/AllServices";
+import {
+    getPaginatedGamesByParams,
+    getPaginatedGamesByUrl,
+} from "../../services/api/AllServices";
 import { IGame } from "../../types/IGame";
 import CSection from "../common/CSection";
 import SortDropDown from "./SortDropDown";
@@ -8,7 +11,6 @@ import { useEffect, useRef, useState } from "react";
 import GamesGrid from "./GamesGrid";
 import Loading from "../common/Loading";
 import ErrorPage from "../../pages/ErrorPage";
-import { pre } from "framer-motion/client";
 
 type GamesGaleryProps = {
     header: string;
@@ -26,6 +28,7 @@ const GamesGalery = ({
     handleSortOrderChange,
 }: GamesGaleryProps) => {
     const [gameList, setGameList] = useState<IGame[]>([]);
+    const [hasNext, setHasNext] = useState<string | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
@@ -39,10 +42,11 @@ const GamesGalery = ({
         let isMounted = true;
         const fetchGamesList = async () => {
             try {
-                const games = await getMultipleGames(queryParams);
+                const response = await getPaginatedGamesByParams(queryParams);
                 if (isMounted) {
-                    setGameList(games);
+                    setGameList(response.results);
                     setIsError(false);
+                    setHasNext(response.next);
                 }
             } catch (err) {
                 if (isMounted) {
@@ -60,20 +64,19 @@ const GamesGalery = ({
 
         return () => {
             isMounted = false;
-            setGameList([]); // Cleanup state when component unmounts
+            setGameList([]);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [header, queryParams.ordering]);
 
     useEffect(() => {
-        if (isInView) {
+        if (isInView && hasNext) {
+            setIsLoading(true);
             const fetchGamesList = async () => {
                 try {
-                    const games = await getMultipleGames({
-                        ...queryParams,
-                        page: gameList.length / 15 + 1,
-                    });
-
-                    setGameList([...gameList].concat(games));
+                    const response = await getPaginatedGamesByUrl(hasNext);
+                    setGameList([...gameList].concat(response.results));
+                    setHasNext(response.next);
                     setIsError(false);
                 } catch (err) {
                     setIsError(true);
@@ -85,6 +88,7 @@ const GamesGalery = ({
 
             fetchGamesList();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
     if (isError) return <ErrorPage />;
