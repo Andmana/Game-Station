@@ -39,9 +39,14 @@ export const getFiveYearLaterDateIsoString = (): string => {
     return formatDateToIsoString(oneYearLater);
 };
 
-export const getYearStartDateIsoString = (): string => {
+export const getThisYearStartDateIsoString = (): string => {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const yearStartDate = new Date(Date.UTC(year, 0, 1)); // January 1st at 00:00:00 UTC
+    return formatDateToIsoString(yearStartDate);
+};
+
+export const get2010StartDateIsoString = (): string => {
+    const yearStartDate = new Date(Date.UTC(2010, 0, 1)); // January 1st at 00:00:00 UTC
     return formatDateToIsoString(yearStartDate);
 };

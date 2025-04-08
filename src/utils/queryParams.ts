@@ -1,13 +1,17 @@
 import { IQueryParams } from "../types/IQueryParams";
 import {
+    get2010StartDateIsoString,
     getCurrentDateIsoString,
     getDate30daysAgoisoString,
     getFiveYearLaterDateIsoString,
-    getYearStartDateIsoString,
+    getThisYearStartDateIsoString,
 } from "./formatDate";
 
 const date = new Date();
 const prevYear = date.getFullYear() - 1;
+const dateIsoString2010 = `
+    ${get2010StartDateIsoString},${getCurrentDateIsoString()}
+    `;
 
 export const queryConfig: Record<string, IQueryParams> = {
     default: {
@@ -15,6 +19,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: true,
         queryParams: {
             ordering: "-relevance",
+            dates: dateIsoString2010,
         },
     },
     "last-30-days": {
@@ -38,7 +43,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: false,
         queryParams: {
             ordering: "-added",
-            dates: `${getYearStartDateIsoString()},${getCurrentDateIsoString()}`,
+            dates: `${getThisYearStartDateIsoString()},${getCurrentDateIsoString()}`,
         },
     },
     "popular-in-prev-year": {
@@ -54,6 +59,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         hasSort: false,
         queryParams: {
             ordering: "-added",
+            dates: dateIsoString2010,
         },
     },
     pc: {
@@ -62,6 +68,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             parent_platforms: "1",
+            dates: dateIsoString2010,
         },
     },
     playstation: {
@@ -70,6 +77,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             parent_platforms: "2",
+            dates: dateIsoString2010,
         },
     },
     xbox: {
@@ -78,6 +86,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             parent_platforms: "3",
+            dates: dateIsoString2010,
         },
     },
     nintendo: {
@@ -86,6 +95,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             parent_platforms: "7",
+            dates: dateIsoString2010,
         },
     },
     android: {
@@ -94,6 +104,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             parent_platforms: "8",
+            dates: dateIsoString2010,
         },
     },
     ios: {
@@ -102,6 +113,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             parent_platforms: "4",
+            dates: dateIsoString2010,
         },
     },
     action: {
@@ -110,6 +122,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "action",
+            dates: dateIsoString2010,
         },
     },
     strategy: {
@@ -118,6 +131,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "strategy",
+            dates: dateIsoString2010,
         },
     },
     rpg: {
@@ -126,6 +140,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "role-playing-games-rpg",
+            dates: dateIsoString2010,
         },
     },
     shooter: {
@@ -134,6 +149,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "shooter",
+            dates: dateIsoString2010,
         },
     },
     adventure: {
@@ -142,6 +158,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "adventure",
+            dates: dateIsoString2010,
         },
     },
     puzzle: {
@@ -150,6 +167,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "puzzle",
+            dates: dateIsoString2010,
         },
     },
     racing: {
@@ -158,6 +176,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "racing",
+            dates: dateIsoString2010,
         },
     },
     sports: {
@@ -166,6 +185,7 @@ export const queryConfig: Record<string, IQueryParams> = {
         queryParams: {
             ordering: "-relevance",
             genres: "sports",
+            dates: dateIsoString2010,
         },
     },
 };

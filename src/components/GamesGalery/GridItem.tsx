@@ -72,7 +72,7 @@ const GridItem = ({
                         </>
                     )}
 
-                    {game.genres && (
+                    {game.genres && game.genres?.length > 0 && (
                         <>
                             <ItemDetail
                                 label="Genre"
@@ -84,7 +84,7 @@ const GridItem = ({
                         </>
                     )}
 
-                    {game.tags && (
+                    {game.tags && game.tags.length > 0 && (
                         <ItemDetail
                             label="Tags"
                             values={game.tags

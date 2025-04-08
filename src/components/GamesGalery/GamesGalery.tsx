@@ -1,23 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useRef, useState } from "react";
+import CSection from "../common/CSection";
+import { IGame } from "../../types/IGame";
 import {
     getPaginatedGamesByParams,
     getPaginatedGamesByUrl,
 } from "../../services/api/AllServices";
-import { IGame } from "../../types/IGame";
-import CSection from "../common/CSection";
-import SortDropDown from "./SortDropDown";
-import { useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import GamesGrid from "./GamesGrid";
 import Loading from "../common/Loading";
 import ErrorPage from "../../pages/ErrorPage";
+import SortDropDown from "./SortDropDown";
+import { useInView } from "framer-motion";
 
 type GamesGaleryProps = {
     header: string;
     queryParams: Record<string, string>;
     hasSort: boolean;
     isReleased: boolean;
-    handleSortOrderChange: (order: string) => void;
 };
 
 const GamesGalery = ({
@@ -25,71 +24,94 @@ const GamesGalery = ({
     queryParams,
     hasSort,
     isReleased,
-    handleSortOrderChange,
 }: GamesGaleryProps) => {
-    console.log("isReleased :", isReleased);
     const [gameList, setGameList] = useState<IGame[]>([]);
-    const [hasNext, setHasNext] = useState<string | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
+    const [hasNext, setHasNext] = useState<string | undefined>(undefined);
+    const [currOrder, setCurrOrder] = useState(queryParams.ordering);
 
-    const container = useRef(null);
-    const isInView = useInView(container, {
-        once: false,
-        initial: false,
-    });
+    const handleSortOrderChange = async (order: string) => {
+        setCurrOrder(order);
+    };
+
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { once: false, initial: false });
 
     useEffect(() => {
-        let isMounted = true;
-        const fetchGamesList = async () => {
+        setIsLoading(true);
+        let isMount = true;
+        const fetchGames = async () => {
             try {
-                const response = await getPaginatedGamesByParams(queryParams);
-                if (isMounted) {
+                const response = await getPaginatedGamesByParams({
+                    ...queryParams,
+                    ordering: currOrder,
+                });
+                if (isMount) {
                     setGameList(response.results);
-                    setIsError(false);
                     setHasNext(response.next);
                 }
-            } catch (err) {
-                if (isMounted) {
-                    setIsError(true);
-                    setGameList([]);
-                }
+                setIsError(false);
+            } catch {
+                setIsError(true);
+                setGameList([]);
             } finally {
-                if (isMounted) {
-                    setIsLoading(false);
-                }
+                setIsLoading(false);
             }
         };
-
-        fetchGamesList();
-
+        fetchGames();
         return () => {
-            isMounted = false;
+            isMount = false;
             setGameList([]);
+            setIsLoading(false);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [header, queryParams.ordering]);
+    }, [currOrder]);
 
     useEffect(() => {
-        if (isInView && hasNext) {
-            setIsLoading(true);
-            const fetchGamesList = async () => {
-                try {
-                    const response = await getPaginatedGamesByUrl(hasNext);
-                    setGameList([...gameList].concat(response.results));
-                    setHasNext(response.next);
-                    setIsError(false);
-                } catch (err) {
-                    setIsError(true);
-                    setGameList([]);
-                } finally {
-                    setIsLoading(false);
-                }
-            };
+        setIsLoading(true);
 
-            fetchGamesList();
+        let isMount = true;
+        const fetchGames = async () => {
+            try {
+                const response = await getPaginatedGamesByParams(queryParams);
+                if (isMount) {
+                    setGameList(response.results);
+                    setHasNext(response.next);
+                }
+                setIsError(false);
+            } catch {
+                setIsError(true);
+                setGameList([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchGames();
+        return () => {
+            isMount = false;
+            setGameList([]);
+            setIsLoading(false);
+        };
+    }, [header]);
+
+    const loadMoreGames = async () => {
+        if (hasNext && !isLoading) {
+            setIsLoading(true);
+            try {
+                const response = await getPaginatedGamesByUrl(hasNext);
+                setGameList((prev) => [...prev, ...response.results]);
+                setHasNext(response.next);
+                setIsError(false);
+            } catch {
+                setIsError(true);
+                setGameList([]);
+            } finally {
+                setIsLoading(false);
+            }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    };
+    useEffect(() => {
+        if (isInView) loadMoreGames();
     }, [isInView]);
 
     if (isError) return <ErrorPage />;
@@ -97,20 +119,18 @@ const GamesGalery = ({
     return (
         <CSection customClass="flex-1 !pt-[80px] sm:!pt-[100px] !h-auto flex flex-col gap-9">
             <h1 className="!text-6xl">{header}</h1>
-
             {hasSort && (
                 <SortDropDown
-                    currentSort={queryParams.ordering}
+                    currentSort={currOrder}
                     handleSortOrderChange={handleSortOrderChange}
                 />
             )}
-
             <GamesGrid games={gameList} isReleased={isReleased} />
 
             {isLoading && <Loading />}
-
-            <div ref={container} className="h-2.5"></div>
+            <div ref={containerRef} className="h-2.5"></div>
         </CSection>
     );
 };
+
 export default GamesGalery;
