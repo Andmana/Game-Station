@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Shop from "../pages/shop";
 import Homepage from "../pages/homepage";
 import { loader as shopLoader } from "../pages/shop/loader";
+import Game from "../pages/game";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                         index: true,
                         element: <Shop />,
                         loader: shopLoader,
+                    },
+                    {
+                        path: "/game",
+                        element: <Game />,
                     },
                 ],
             },

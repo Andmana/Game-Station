@@ -13,6 +13,7 @@ export interface IGame {
     name: string;
     slug: string;
     description?: string;
+    description_raw?: string;
     released?: string;
     background_image?: string;
     genres?: IGenres[];
@@ -22,6 +23,7 @@ export interface IGame {
     tags?: ITags[];
     contentRating?: IContentRating;
     screenshots?: IScreenshots;
+    website?: string;
     price?: number;
 }
 

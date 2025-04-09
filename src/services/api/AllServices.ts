@@ -12,8 +12,10 @@ import {
 } from "../../utils/formatDate";
 
 // Function to fetch game details by ID
-export const getGameById = async (GameId: number): Promise<IGame> => {
-    const endpoint = `/games/${GameId}`;
+export const getGameById = async (
+    slugOrId: string | number
+): Promise<IGame> => {
+    const endpoint = `/games/${slugOrId}`;
     const responseData = await fetchData<IGameDetailResponse>(endpoint);
 
     const result = mappingIGameDetailed(responseData);

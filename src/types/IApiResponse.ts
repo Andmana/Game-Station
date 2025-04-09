@@ -13,10 +13,12 @@ export interface IGameDetailResponse {
     name: string;
     slug: string;
     description: string;
+    description_raw: string;
     released?: string;
     background_image?: string;
     genres?: IGenres[];
     parent_platforms?: IParentPlatform[];
+    website?: string;
     developers?: IDevelopers[];
     publishers?: IPublisher[];
     tags?: ITags[];
