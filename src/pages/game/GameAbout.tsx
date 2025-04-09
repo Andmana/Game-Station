@@ -17,11 +17,12 @@ const GameAbout = ({ game }: { game: IGame }) => {
                 {displayText}
                 {game.description_raw && game.description_raw.length > 400 && (
                     <motion.button
-                        className="text-white"
+                        className="text-white text-[0.9rem]"
                         onClick={() => toggleCollapse()}
+                        initial={{ scale: 1 }}
                         whileHover={{ scale: 1.1 }}
                     >
-                        {isCollapsed ? "Show More" : "Show Less"}
+                        {isCollapsed ? "read more" : "show less"}
                     </motion.button>
                 )}
             </p>
