@@ -9,7 +9,7 @@ import GameDetail from "./GameDetail";
 import CarouselV2 from "../../components/carousel/CarouselV2";
 import Loading from "../../components/common/Loading";
 import ErrorPage from "../ErrorPage";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Game = () => {
     const id = useLoaderData() as string;
@@ -44,10 +44,7 @@ const SmallDisplay = ({ data }: { data: IGame }) => {
                 }}
                 className="flex flex-col justify-between gap-4  main-padding !pt-0 "
             >
-                <div className="flex justify-between items-center text-4xl font-black ">
-                    <div>Back</div>
-                    <div className="flex-1 text-end">{data.name}</div>
-                </div>
+                <Header data={data} />
 
                 <div className="flex-1 rounded-xl overflow-hidden">
                     <CarouselV2
@@ -77,11 +74,8 @@ const SmallDisplay = ({ data }: { data: IGame }) => {
 
 const LargeScreen = ({ data }: { data: IGame }) => {
     return (
-        <CSection customClass="main-padding !pt-[65px] flex flex-col overflow-y-hidden">
-            <div className="flex justify-between items-center text-4xl font-black pb-4 h-[60px]">
-                <div>Back</div>
-                <div className="flex-1 text-end">{data.name}</div>
-            </div>
+        <CSection customClass="main-padding !pt-[65px] gap-6 flex flex-col overflow-y-hidden">
+            <Header data={data} />
             <div className="flex-1 flex gap-4 overflow-y-hidden">
                 <div className="flex-2/3 rounded-xl overflow-hidden">
                     <CarouselV2
@@ -111,6 +105,22 @@ const LargeScreen = ({ data }: { data: IGame }) => {
                 </article>
             </div>
         </CSection>
+    );
+};
+
+const Header = ({ data }: { data: IGame }) => {
+    const navigate = useNavigate();
+    return (
+        <div className="flex justify-between items-start text-4xl font-black ">
+            <CButton
+                onClick={() => {
+                    navigate(-1);
+                }}
+            >
+                Back
+            </CButton>
+            <div className="flex-1 text-end">{data.name}</div>
+        </div>
     );
 };
 
