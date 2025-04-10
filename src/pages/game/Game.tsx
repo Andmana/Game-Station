@@ -16,12 +16,15 @@ const Game = () => {
     const fetchData = async (): Promise<IGame> => {
         return await getGameById(id);
     };
+
     const { isPending, error, data } = useQuery<IGame | Error>({
-        queryKey: ["game"],
+        queryKey: ["game", id], // Include the game ID to ensure refetching
         queryFn: fetchData,
+        refetchOnWindowFocus: true, // Refetch when the window regains focus
+        enabled: !!id,
     });
 
-    if (isPending) return <Loading customClass="absolute" />;
+    if (isPending) return <Loading customClass="absolute h-screen" />;
     if (error) return <ErrorPage />;
     return (
         <>
