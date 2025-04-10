@@ -12,7 +12,6 @@ import ErrorPage from "../ErrorPage";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../App";
-import CartItems from "../../components/aside-cart/CartItems";
 
 const Game = () => {
     const id = useLoaderData() as string;

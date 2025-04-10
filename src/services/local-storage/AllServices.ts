@@ -1,3 +1,4 @@
+import { IGame } from "../../types/IGame";
 import { ILocalStorage } from "../../types/ILocalStorage";
 import generateRandomPrice from "../../utils/randomPrice";
 import { getFromLocalStorage, saveToLocalStorage } from "./LocalStorageService";
@@ -31,4 +32,15 @@ const generateAndSaveNewGamePrice = (
     saveToLocalStorage(storedData);
 
     return price;
+};
+
+export const getCartItems = (): IGame[] => {
+    const storedData = getFromLocalStorage();
+    return storedData.cartItems;
+};
+
+export const saveCartItemsToLocalStorage = (items: IGame[]) => {
+    const storedData = getFromLocalStorage();
+    storedData.cartItems = items;
+    saveToLocalStorage(storedData);
 };

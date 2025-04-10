@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import Nav from "./components/nav";
 import AsideCart from "./components/aside-cart";
-import { dummyGames } from "./utils/dummy";
 import { IGame } from "./types/IGame";
+import {
+    getCartItems,
+    saveCartItemsToLocalStorage,
+} from "./services/local-storage/AllServices";
 
 // Define the type for the context value
 interface CartContextType {
@@ -27,7 +30,7 @@ export const CartContext = createContext<CartContextType>({
 
 function App() {
     const [isCartVisible, setIsCardVisible] = useState(false);
-    const [cartItems, SetCartItems] = useState([...dummyGames]);
+    const [cartItems, SetCartItems] = useState([...getCartItems()]);
 
     const handleCartState = () => [setIsCardVisible((prev: boolean) => !prev)];
 
@@ -47,6 +50,10 @@ function App() {
     const clearCartItems = () => {
         SetCartItems([]);
     };
+
+    useEffect(() => {
+        saveCartItemsToLocalStorage(cartItems);
+    }, [cartItems]);
 
     return (
         <CartContext.Provider
