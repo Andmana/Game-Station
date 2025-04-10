@@ -1,4 +1,8 @@
-import { IGameDetailResponse, IGamesResponse } from "../../types/IApiResponse";
+import {
+    IGameDetailResponse,
+    IGamesResponse,
+    IScreenshotsResponse,
+} from "../../types/IApiResponse";
 import {
     mappingIGame,
     mappingIGameDetailed,
@@ -10,6 +14,7 @@ import {
     getCurrentDateIsoString,
     getOneYearLaterDateIsoString,
 } from "../../utils/formatDate";
+import { IScreenshots } from "../../types/shared";
 
 // Function to fetch game details by ID
 export const getGameById = async (
@@ -18,7 +23,12 @@ export const getGameById = async (
     const endpoint = `/games/${slugOrId}`;
     const responseData = await fetchData<IGameDetailResponse>(endpoint);
 
+    const screenshotsResponse = await fetchData<IScreenshotsResponse>(
+        endpoint + "/screenshots"
+    );
+
     const result = mappingIGameDetailed(responseData);
+    result.screenshots = screenshotsResponse.results;
     return result;
 };
 

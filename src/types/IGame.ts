@@ -22,7 +22,7 @@ export interface IGame {
     publishers?: IPublisher[];
     tags?: ITags[];
     contentRating?: IContentRating;
-    screenshots?: IScreenshots;
+    screenshots?: IScreenshots[];
     website?: string;
     price?: number;
 }
