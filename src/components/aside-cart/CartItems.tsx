@@ -9,7 +9,7 @@ import { IGame } from "../../types/IGame";
 
 interface CartItemsProps {
     cartItems: IGame[];
-    removeCartItem: (id: number | string) => void;
+    removeCartItem: (id: number) => void;
 }
 
 const CartItems = ({ cartItems, removeCartItem }: CartItemsProps) => {
@@ -26,7 +26,7 @@ const CartItems = ({ cartItems, removeCartItem }: CartItemsProps) => {
                         transition={SPRING_OPTIONS}
                     >
                         <Link
-                            to="/"
+                            to={`/game/${item.id}`}
                             className="relative w-full bg-[#242424] py-5 px-4 flex justify-between items-center gap-2 rounded-xl"
                         >
                             <div className="absolute top-2 right-2 h-6 w-6 p-1.5 bg-black rounded-[50%]">

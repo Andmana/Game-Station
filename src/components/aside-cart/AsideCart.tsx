@@ -9,7 +9,7 @@ interface AsideCartProps {
     isCartVisible: boolean;
     cartItems: IGame[];
     handleCartState?: () => void;
-    removeCartItem: (id: number | string) => void;
+    removeCartItem: (id: number) => void;
     clearCartItems: () => void;
 }
 
