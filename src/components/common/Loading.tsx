@@ -71,7 +71,7 @@ const Loading = ({ customClass }: LoadingProps) => {
 
     return (
         <div
-            className={`relative w-full h-full flex flex-col justify-center items-center gap-4 ${customClass} bg-[#242424] `}
+            className={`relative w-full h-full min-h-[30vh] flex flex-col justify-center items-center gap-4 ${customClass} bg-[#242424] `}
         >
             <p className="-z-0 absolute text-3xl font-black tracking-wide">
                 LOADING...
