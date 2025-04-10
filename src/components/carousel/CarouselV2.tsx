@@ -10,7 +10,7 @@ const imagesTemp = [img1, img2, img3];
 const CarouselV2 = ({ images = imagesTemp }) => {
     const [[page, direction], setPage] = useState([0, 0]);
     const imageIndex = wrap(0, images.length, page);
-    const paginate = (newD: number) => setPage([page + newD, newD]);
+    const paginate = (newD: number) => setPage([page + 1, newD]);
 
     useEffect(() => {
         console.log("page :", page);
@@ -25,17 +25,16 @@ const CarouselV2 = ({ images = imagesTemp }) => {
                     key={page}
                     src={images[imageIndex]}
                     className="absolute w-full h-full "
-                    custom={direction}
                     variants={{
-                        enter: (dir) => ({
-                            y: dir > 0 ? 1000 : -1000,
+                        enter: {
+                            y: direction > 0 ? 1000 : -1000,
                             opacity: 0,
-                        }),
+                        },
                         center: { y: 0, opacity: 1 },
-                        exit: (dir) => ({
-                            y: dir < 0 ? 1000 : -1000,
+                        exit: {
+                            y: direction < 0 ? 1000 : -1000,
                             opacity: 0,
-                        }),
+                        },
                     }}
                     initial="enter"
                     animate="center"
