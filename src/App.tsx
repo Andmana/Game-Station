@@ -27,7 +27,7 @@ function App() {
                 className="bg-dark relative min-h-screen text-white flex flex-col"
             >
                 <Nav handleCartState={handleCartState} />
-                <main className="">
+                <main className="min-h-screen relative">
                     <Outlet />
                 </main>
                 <AsideCart

@@ -12,12 +12,6 @@ const CarouselV2 = ({ images = imagesTemp }) => {
     const imageIndex = wrap(0, images.length, page);
     const paginate = (newD: number) => setPage([page + 1, newD]);
 
-    useEffect(() => {
-        console.log("page :", page);
-        console.log("direction :", direction);
-        console.log("imageIndex :", imageIndex);
-    }, [page, direction]);
-
     return (
         <div className="relative h-full flex justify-center items-center overflow-hidden isolate">
             <AnimatePresence>
