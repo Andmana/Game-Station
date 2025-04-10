@@ -5,6 +5,8 @@ import { platformIcons } from "../../utils/platformIcons";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
 
+import iconCheck from "../../assets/images/icon-check.svg";
+
 const GridItem = ({
     game,
     isReleased,
@@ -13,7 +15,7 @@ const GridItem = ({
     isReleased?: boolean;
 }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const { addItemToCart } = useContext(CartContext);
+    const { addItemToCart, cartItems } = useContext(CartContext);
 
     const handleCartButton = (event: MouseEvent) => {
         event.preventDefault();
@@ -58,15 +60,25 @@ const GridItem = ({
                                 })}
                             </div>
                             {isReleased && (
-                                <div className="font-semibold h-8 flex items-stretch pointer-events-none">
+                                <div className="font-semibold h-8 flex items-stretch  pointer-events-none">
                                     <span className="bg-white text-black  border-1 border-white p-1">
                                         $ {game.price}
                                     </span>
                                     <button
-                                        className="border-1 p-1 pointer-events-auto cursor-pointer"
+                                        className="border-1 p-1 pointer-events-auto"
                                         onClick={handleCartButton}
                                     >
-                                        +Chart
+                                        {cartItems.some(
+                                            (item) => item.id === game.id
+                                        ) ? (
+                                            <img
+                                                src={iconCheck}
+                                                alt="Item added"
+                                                className="w-full h-full px-3.5"
+                                            />
+                                        ) : (
+                                            "+ Cart"
+                                        )}
                                     </button>
                                 </div>
                             )}
