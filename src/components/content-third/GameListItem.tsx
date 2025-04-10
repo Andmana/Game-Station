@@ -14,7 +14,7 @@ const GameListItem = ({ game, variants }: GameListItemProps) => {
             variants={variants}
             className="w-full flex justify-start text-[1rem] "
         >
-            <CLink to="/shop">
+            <CLink to={`/game/${game.id}`}>
                 <motion.div className="flex gap-4">
                     <div
                         className="w-[70px] h-[80px] rounded-xl bg-center bg-cover"
