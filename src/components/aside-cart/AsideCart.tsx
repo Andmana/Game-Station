@@ -57,7 +57,13 @@ const AsideCart = ({
                 />
 
                 <div className=" h-[50px] flex justify-between items-center ">
-                    <h1>Total : {cartItems.length}</h1>
+                    <h1>
+                        Total :{" $ "}
+                        {cartItems.reduce(
+                            (sum, item) => sum + (item.price ?? 0),
+                            0
+                        )}
+                    </h1>
                     <CButton>CheckOut</CButton>
                 </div>
             </motion.div>
