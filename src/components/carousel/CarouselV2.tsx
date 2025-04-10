@@ -10,7 +10,7 @@ const imagesTemp = [img1, img2, img3];
 const CarouselV2 = ({ images = imagesTemp }) => {
     const [[page, direction], setPage] = useState([0, 0]);
     const imageIndex = wrap(0, images.length, page);
-    const paginate = (newD: number) => setPage([page + 1, newD]);
+    const paginate = (newD: number) => setPage([page + newD, newD]);
 
     return (
         <div className="relative h-full flex justify-center items-center overflow-hidden isolate">
@@ -56,7 +56,7 @@ const CarouselV2 = ({ images = imagesTemp }) => {
                 >
                     <img
                         src={Navigatebtn}
-                        alt=""
+                        alt="Screenshot"
                         className="w-8 h-8 p-1 rotate-180 bg-[#ffffff70] rounded-full"
                     />
                 </button>
