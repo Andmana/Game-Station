@@ -1,10 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
 import ErrorPage from "../pages/ErrorPage";
 import Shop from "../pages/shop";
 import Homepage from "../pages/homepage";
 import { loader as shopLoader } from "../pages/shop/loader";
 import Game from "../pages/game";
+import { loader as gameLoader } from "../pages/game/loader";
 
 const router = createBrowserRouter([
     {
@@ -21,19 +22,23 @@ const router = createBrowserRouter([
                     {
                         // This handles "/shop" with no parameter
                         path: "/shop",
-                        index: true,
                         element: <Shop />,
                         loader: shopLoader,
                     },
                     {
                         path: "/shop/:filters",
-                        index: true,
                         element: <Shop />,
                         loader: shopLoader,
                     },
                     {
-                        path: "/game",
+                        path: "/game/:id",
                         element: <Game />,
+                        loader: gameLoader,
+                    },
+                    {
+                        // Redirect /game to /games
+                        path: "/game",
+                        element: <Navigate to="/shop" replace />,
                     },
                 ],
             },

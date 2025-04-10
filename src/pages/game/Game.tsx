@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getGameById } from "../../services/api/AllServices";
 import { IGame } from "../../types/IGame";
 import CSection from "../../components/common/CSection";
-import { dummyGame } from "../../utils/dummy";
 import MediaQuery from "react-responsive";
 import GameAbout from "./GameAbout";
 import CButton from "../../components/common/CButton";
@@ -10,12 +9,13 @@ import GameDetail from "./GameDetail";
 import CarouselV2 from "../../components/carousel/CarouselV2";
 import Loading from "../../components/common/Loading";
 import ErrorPage from "../ErrorPage";
-
-const fetchData = async (): Promise<IGame> => {
-    return await getGameById(3489);
-};
+import { useLoaderData } from "react-router-dom";
 
 const Game = () => {
+    const id = useLoaderData() as string;
+    const fetchData = async (): Promise<IGame> => {
+        return await getGameById(id);
+    };
     const { isPending, error, data } = useQuery<IGame | Error>({
         queryKey: ["game"],
         queryFn: fetchData,
@@ -46,7 +46,7 @@ const SmallDisplay = ({ data }: { data: IGame }) => {
             >
                 <div className="flex justify-between items-center text-4xl font-black ">
                     <div>Back</div>
-                    <div>{data.name}</div>
+                    <div className="flex-1 text-end">{data.name}</div>
                 </div>
 
                 <div className="flex-1 rounded-xl overflow-hidden">
@@ -80,7 +80,7 @@ const LargeScreen = ({ data }: { data: IGame }) => {
         <CSection customClass="main-padding !pt-[65px] flex flex-col overflow-y-hidden">
             <div className="flex justify-between items-center text-4xl font-black pb-4 h-[60px]">
                 <div>Back</div>
-                <div>{data.name}</div>
+                <div className="flex-1 text-end">{data.name}</div>
             </div>
             <div className="flex-1 flex gap-4 overflow-y-hidden">
                 <div className="flex-2/3 rounded-xl overflow-hidden">
