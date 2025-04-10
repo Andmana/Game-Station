@@ -18,7 +18,7 @@ const CarouselV2 = ({ images = imagesTemp }) => {
                 <motion.img
                     key={page}
                     src={images[imageIndex]}
-                    className="absolute w-full h-full "
+                    className="absolute w-full h-full object-cover object-center"
                     variants={{
                         enter: {
                             y: direction > 0 ? 1000 : -1000,
