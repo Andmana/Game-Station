@@ -24,7 +24,7 @@ export const queryConfig: Record<string, IQueryParams> = {
     },
     "last-30-days": {
         name: "Last 30 Days",
-        hasSort: false,
+        hasSort: true,
         queryParams: {
             ordering: "-added",
             dates: `${getDate30daysAgoisoString()},${getCurrentDateIsoString()}`,
@@ -32,7 +32,7 @@ export const queryConfig: Record<string, IQueryParams> = {
     },
     upcoming: {
         name: "Upcoming Games",
-        hasSort: false,
+        hasSort: true,
         queryParams: {
             ordering: "-added",
             dates: `${getCurrentDateIsoString()},${getFiveYearLaterDateIsoString()}`,
