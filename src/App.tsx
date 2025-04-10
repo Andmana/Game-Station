@@ -12,6 +12,7 @@ interface CartContextType {
     cartItems: IGame[];
     removeCartItem: (id: number) => void;
     addItemToCart: (game: IGame) => void;
+    isAddedToCart: (id: number) => boolean;
     clearCartItems: () => void;
 }
 
@@ -21,6 +22,7 @@ export const CartContext = createContext<CartContextType>({
     removeCartItem: () => {},
     addItemToCart: () => {},
     clearCartItems: () => {},
+    isAddedToCart: () => true,
 });
 
 function App() {
@@ -38,13 +40,23 @@ function App() {
             else return [game, ...prev];
         });
 
+    const isAddedToCart = (id: number): boolean => {
+        return cartItems.some((item) => item.id === id);
+    };
+
     const clearCartItems = () => {
         SetCartItems([]);
     };
 
     return (
         <CartContext.Provider
-            value={{ addItemToCart, clearCartItems, removeCartItem, cartItems }}
+            value={{
+                addItemToCart,
+                clearCartItems,
+                removeCartItem,
+                cartItems,
+                isAddedToCart,
+            }}
         >
             <AnimatePresence>
                 <div

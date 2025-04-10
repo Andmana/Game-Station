@@ -47,7 +47,7 @@ const AsideCart = ({
                 className="bg-[#1c1c1c]  w-[85%] h-screen max-w-[400px] px-4 md:px-8 py-6 flex flex-col justify-between gap-4"
             >
                 <div className=" h-[50px] flex justify-between items-center ">
-                    <h1>Items : {cartItems.length}</h1>
+                    <h1 className="!text-xl">Items : {cartItems.length}</h1>
                     <CButton onClick={clearCartItems}>Clear</CButton>
                 </div>
 
@@ -57,7 +57,7 @@ const AsideCart = ({
                 />
 
                 <div className=" h-[50px] flex justify-between items-center ">
-                    <h1>
+                    <h1 className="!text-xl">
                         Total :{" $ "}
                         {cartItems.reduce(
                             (sum, item) => sum + (item.price ?? 0),

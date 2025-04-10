@@ -10,6 +10,9 @@ import CarouselV2 from "../../components/carousel/CarouselV2";
 import Loading from "../../components/common/Loading";
 import ErrorPage from "../ErrorPage";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../App";
+import CartItems from "../../components/aside-cart/CartItems";
 
 const Game = () => {
     const id = useLoaderData() as string;
@@ -39,6 +42,9 @@ const Game = () => {
 };
 
 const SmallDisplay = ({ data }: { data: IGame }) => {
+    const { addItemToCart, removeCartItem, isAddedToCart } =
+        useContext(CartContext);
+
     return (
         <section className="w-fulloverflow-hidden" style={{ marginTop: 65 }}>
             <div
@@ -59,7 +65,18 @@ const SmallDisplay = ({ data }: { data: IGame }) => {
 
                 <div className="text-2xl flex justify-between rounded-2xl  py-4 px-8 bg-custom-gradient-top">
                     <span className="text-lg">${data.price}</span>
-                    <CButton customClass="font-black">Add to Chart +</CButton>
+                    <CButton
+                        onClick={() =>
+                            isAddedToCart(data.id)
+                                ? removeCartItem(data.id)
+                                : addItemToCart(data)
+                        }
+                        customClass="font-black"
+                    >
+                        {isAddedToCart(data.id)
+                            ? "Remove from cart"
+                            : "Add to Cart +"}
+                    </CButton>
                 </div>
             </div>
             <article className="main-padding">
@@ -76,6 +93,8 @@ const SmallDisplay = ({ data }: { data: IGame }) => {
 };
 
 const LargeScreen = ({ data }: { data: IGame }) => {
+    const { addItemToCart, removeCartItem, isAddedToCart } =
+        useContext(CartContext);
     return (
         <CSection customClass="main-padding !pt-[65px] gap-6 flex flex-col overflow-y-hidden">
             <Header data={data} />
@@ -103,7 +122,18 @@ const LargeScreen = ({ data }: { data: IGame }) => {
 
                     <div className="text-2xl flex justify-between rounded-2xl  py-4 px-8 bg-custom-gradient">
                         <span>${data.price}</span>
-                        <CButton>+Chart</CButton>
+                        <CButton
+                            onClick={() =>
+                                isAddedToCart(data.id)
+                                    ? removeCartItem(data.id)
+                                    : addItemToCart(data)
+                            }
+                            customClass="font-black"
+                        >
+                            {isAddedToCart(data.id)
+                                ? "Remove from cart"
+                                : "Add to Cart +"}
+                        </CButton>
                     </div>
                 </article>
             </div>
