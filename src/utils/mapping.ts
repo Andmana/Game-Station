@@ -2,7 +2,7 @@ import { getGamePrice } from "../services/local-storage/AllServices";
 import {
     IGameDetailResponse,
     IGameResultResponse,
-    IGamesResponse,
+    IPaginatedResponse,
 } from "../types/IApiResponse";
 import { IGame, IGames } from "../types/IGame";
 
@@ -68,7 +68,9 @@ export const mappingIGameDetailed = (target: IGameDetailResponse): IGame => {
     };
 };
 
-export const mappingIGames = (target: IGamesResponse): IGames => {
+export const mappingIGames = (
+    target: IPaginatedResponse<IGameResultResponse>
+): IGames => {
     const { count, previous, next, results } = target;
     const mappedGames: IGame[] = [];
     for (const item of results) {

@@ -4,7 +4,6 @@ import {
     IGenres,
     IPlatform,
     IPublisher,
-    IScreenshots,
     ITags,
 } from "./shared";
 
@@ -44,11 +43,11 @@ export interface IGamesResponse {
     results: IGameResultResponse[];
 }
 
-export interface IScreenshotsResponse {
+export interface IPaginatedResponse<T> {
     count: number;
     next?: string;
     previous?: string;
-    results: IScreenshots[];
+    results: T[];
 }
 
 interface IParentPlatform {

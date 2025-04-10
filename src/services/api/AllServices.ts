@@ -1,7 +1,7 @@
 import {
     IGameDetailResponse,
-    IGamesResponse,
-    IScreenshotsResponse,
+    IGameResultResponse,
+    IPaginatedResponse,
 } from "../../types/IApiResponse";
 import {
     mappingIGame,
@@ -23,9 +23,9 @@ export const getGameById = async (
     const endpoint = `/games/${slugOrId}`;
     const responseData = await fetchData<IGameDetailResponse>(endpoint);
 
-    const screenshotsResponse = await fetchData<IScreenshotsResponse>(
-        endpoint + "/screenshots"
-    );
+    const screenshotsResponse = await fetchData<
+        IPaginatedResponse<IScreenshots>
+    >(endpoint + "/screenshots");
 
     const result = mappingIGameDetailed(responseData);
     result.screenshots = screenshotsResponse.results;
@@ -36,7 +36,9 @@ export const getGameById = async (
 export const getMultipleGames = async (
     queryParams: Record<string, unknown>
 ): Promise<IGame[]> => {
-    const responseData = await fetchData<IGamesResponse>("/games", queryParams);
+    const responseData = await fetchData<
+        IPaginatedResponse<IGameResultResponse>
+    >("/games", queryParams);
 
     const results: IGame[] = [];
     for (const rawData of responseData.results) {
@@ -49,8 +51,10 @@ export const getMultipleGames = async (
 
 export const getPaginatedGamesByParams = async (
     queryParams: Record<string, unknown>
-): Promise<IGamesResponse> => {
-    const responseData = await fetchData<IGamesResponse>("/games", queryParams);
+): Promise<IPaginatedResponse<IGameResultResponse>> => {
+    const responseData = await fetchData<
+        IPaginatedResponse<IGameResultResponse>
+    >("/games", queryParams);
     const mappedData: IGame[] = [];
     for (const rawData of responseData.results) {
         const data = mappingIGame(rawData);
@@ -61,7 +65,9 @@ export const getPaginatedGamesByParams = async (
 };
 
 export const getPaginatedGamesByUrl = async (url: string): Promise<IGames> => {
-    const responseData = await fetchDataByUrl<IGamesResponse>(url);
+    const responseData = await fetchDataByUrl<
+        IPaginatedResponse<IGameResultResponse>
+    >(url);
     return mappingIGames(responseData);
 };
 
