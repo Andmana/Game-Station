@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { MouseEvent, useContext, useState } from "react";
 import { IGame } from "../../types/IGame";
 import { motion } from "framer-motion";
 import { platformIcons } from "../../utils/platformIcons";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../App";
 
 const GridItem = ({
     game,
@@ -12,6 +13,13 @@ const GridItem = ({
     isReleased?: boolean;
 }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const { addItemToCart } = useContext(CartContext);
+
+    const handleCartButton = (event: MouseEvent) => {
+        event.preventDefault();
+        addItemToCart(game);
+    };
+
     return (
         <Link to={`/game/${game.id}`}>
             <motion.article
@@ -50,15 +58,16 @@ const GridItem = ({
                                 })}
                             </div>
                             {isReleased && (
-                                <div className="font-semibold">
+                                <div className="font-semibold h-8 flex items-stretch pointer-events-none">
                                     <span className="bg-white text-black  border-1 border-white p-1">
-                                        {" "}
                                         $ {game.price}
                                     </span>
-                                    <span className="border-1 p-1">
-                                        {" "}
+                                    <button
+                                        className="border-1 p-1 pointer-events-auto cursor-pointer"
+                                        onClick={handleCartButton}
+                                    >
                                         +Chart
-                                    </span>
+                                    </button>
                                 </div>
                             )}
                         </div>
