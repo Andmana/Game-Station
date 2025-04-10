@@ -7,9 +7,19 @@ import AsideCart from "./components/aside-cart";
 import { dummyGames } from "./utils/dummy";
 import { IGame } from "./types/IGame";
 
-export const CartContext = createContext({
-    removeCartItem: (id: number) => {},
-    addItemToCart: (game: IGame) => {},
+// Define the type for the context value
+interface CartContextType {
+    cartItems: IGame[];
+    removeCartItem: (id: number) => void;
+    addItemToCart: (game: IGame) => void;
+    clearCartItems: () => void;
+}
+
+// Create the context with a default value of the correct type
+export const CartContext = createContext<CartContextType>({
+    cartItems: [], // Empty array, but typed as IGame[]
+    removeCartItem: () => {},
+    addItemToCart: () => {},
     clearCartItems: () => {},
 });
 
@@ -34,7 +44,7 @@ function App() {
 
     return (
         <CartContext.Provider
-            value={{ addItemToCart, clearCartItems, removeCartItem }}
+            value={{ addItemToCart, clearCartItems, removeCartItem, cartItems }}
         >
             <AnimatePresence>
                 <div
