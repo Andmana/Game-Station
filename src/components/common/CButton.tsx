@@ -11,7 +11,7 @@ interface CButtonProps {
 const CButton = ({ children, onClick, customClass }: CButtonProps) => {
     return (
         <motion.button
-            className={`${customClass?.toString()} flex items-center gap-1.5 font-semibold`}
+            className={`flex items-center gap-1.5 font-semibold ${customClass} `}
             {...transitionConfig}
             onClick={onClick}
         >
