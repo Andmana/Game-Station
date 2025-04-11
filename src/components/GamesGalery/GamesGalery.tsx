@@ -65,7 +65,7 @@ const GamesGalery = ({
             setGameList([]);
             setIsLoading(false);
         };
-    }, [currOrder]);
+    }, [currOrder, queryParams.search]);
 
     useEffect(() => {
         setIsLoading(true);

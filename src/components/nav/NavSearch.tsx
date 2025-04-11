@@ -7,6 +7,7 @@ import { getMultipleGames } from "../../services/api/AllServices";
 import { useQuery } from "@tanstack/react-query";
 import ErrorPage from "../../pages/ErrorPage";
 import Loading from "../common/Loading";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const fetchGames = async (search: string) => {
     const queryParams = {
@@ -38,6 +39,13 @@ const NavSearch = () => {
         enabled: !!searchTerm, // only run if there's input
     });
 
+    const navigate = useNavigate(); // Initialize the navigate function
+    const goToShop = () => {
+        console.log("clicked");
+        console.log("/shop?search=" + inputValue);
+        navigate("/shop?search=" + inputValue); // Navigate to '/shop' with a query parameter
+    };
+
     return (
         <div
             className={`flex-1 max-w-[500px] flex items-center justify-center`}
@@ -65,7 +73,10 @@ const NavSearch = () => {
                     onBlur={() => setIsFocused(false)}
                 />
 
-                <button className="w-6 h-6 absolute right-2 z-10">
+                <button
+                    className="w-6 h-6 absolute right-2 z-10"
+                    onClick={goToShop}
+                >
                     <motion.img
                         {...transitionConfig}
                         className="w-6 h-6"
