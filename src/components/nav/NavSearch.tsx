@@ -1,11 +1,42 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-
+import { ChangeEvent, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import iconSearch from "../../assets/images/icon-search.svg";
 import { transitionConfig } from "../common/modules";
+import NavSearchItem from "./NavSearchItem";
+import { getMultipleGames } from "../../services/api/AllServices";
+import { useQuery } from "@tanstack/react-query";
+import ErrorPage from "../../pages/ErrorPage";
+import Loading from "../common/Loading";
+
+const fetchGames = async (search: string) => {
+    const queryParams = {
+        page_size: 4,
+        search: search,
+        ordering: "-added",
+    };
+    return await getMultipleGames(queryParams);
+};
 
 const NavSearch = () => {
     const [isFocused, setIsFocused] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+
+    // Debounce input changes to reduce API calls
+    useEffect(() => {
+        const debounce = setTimeout(() => setSearchTerm(inputValue), 500);
+        return () => clearTimeout(debounce);
+    }, [inputValue]);
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+    };
+
+    const { data, isLoading, error } = useQuery({
+        queryKey: ["users", searchTerm],
+        queryFn: () => fetchGames(searchTerm),
+        enabled: !!searchTerm, // only run if there's input
+    });
 
     return (
         <div
@@ -25,6 +56,8 @@ const NavSearch = () => {
                 }}
             >
                 <input
+                    onChange={handleInputChange}
+                    value={inputValue}
                     type="text"
                     className="py-0.5 px-2 rounded-md bg-white text-black w-full focus:outline-none"
                     placeholder="Search games..."
@@ -40,6 +73,34 @@ const NavSearch = () => {
                         alt="submit search"
                     />
                 </button>
+                <AnimatePresence>
+                    {/* Transition exit */}
+                    {isFocused && (
+                        <motion.div
+                            className="absolute top-full left-0 w-full min-h-30 rounded-2xl bg-[#171717] overflow-hidden origin-top transform translate-y-4"
+                            initial={{ scaleY: 0 }}
+                            animate={{ scaleY: 1 }}
+                            exit={{ scaleY: 0 }}
+                            transition={{
+                                duration: 0.2,
+                                ease: "easeInOut",
+                            }}
+                        >
+                            {isLoading && <Loading />}
+                            {error && <ErrorPage />}
+                            {data && (
+                                <ul className="p-4 flex flex-col gap-4">
+                                    {data.map((game) => (
+                                        <NavSearchItem
+                                            game={game}
+                                            key={game.id}
+                                        />
+                                    ))}
+                                </ul>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.div>
         </div>
     );
