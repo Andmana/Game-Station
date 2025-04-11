@@ -56,7 +56,12 @@ const GameDetail = ({ game }: { game: IGame }) => {
                         game.publishers.map((publisher) => publisher.name)
                     )}
                 {game.website && (
-                    <a href={game.website}>Website: {game.website}</a>
+                    <a href={game.website}>
+                        Website:{" "}
+                        <span className="text-white underline underline-offset-2">
+                            {game.website}
+                        </span>
+                    </a>
                 )}
             </motion.div>
 
