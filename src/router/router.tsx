@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import ErrorPage from "../pages/ErrorPage";
 import Shop from "../pages/shop";
@@ -6,6 +6,7 @@ import Homepage from "../pages/homepage";
 import { loader as shopLoader } from "../pages/shop/loader";
 import Game from "../pages/game";
 import { loader as gameLoader } from "../pages/game/loader";
+import RandomGame from "../pages/game/RandomGame";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
                     {
                         // Redirect /game to /games
                         path: "/game",
-                        element: <Navigate to="/shop" replace />,
+                        element: <RandomGame />,
                     },
                 ],
             },

@@ -1,6 +1,33 @@
 import { motion, Variants } from "framer-motion";
 import NavItem from "./NavItem";
-import { getRandomNumber } from "../../utils/random";
+
+const menuItems = [
+    {
+        to: "/game",
+        label: "Random Game",
+        customClass: "md:-translate-x-[20px]",
+    },
+    {
+        to: "/shop",
+        label: "Go to Shop",
+        customClass: "md:translate-x-[60px]",
+    },
+    {
+        to: "/shop/all-time-top",
+        label: "All Time Top",
+        customClass: "md:translate-x-[100px]",
+    },
+    {
+        to: "/shop/best-of-the-year",
+        label: "Best of the Year",
+        customClass: "md:translate-x-[60px]",
+    },
+    {
+        to: "/shop/last-30-days",
+        label: "Last 30 Days",
+        customClass: "md:-translate-x-[20px]",
+    },
+];
 
 const itemVariants: Variants = {
     open: {
@@ -21,36 +48,6 @@ interface NavItemsProps {
 }
 
 const NavItems = ({ isOpen }: NavItemsProps) => {
-    const randomGameLink = `/game/${getRandomNumber()}`;
-
-    const menuItems = [
-        {
-            to: randomGameLink,
-            label: "Random Game",
-            customClass: "md:-translate-x-[20px]",
-        },
-        {
-            to: "/shop",
-            label: "Go to Shop",
-            customClass: "md:translate-x-[60px]",
-        },
-        {
-            to: "/shop/all-time-top",
-            label: "All Time Top",
-            customClass: "md:translate-x-[100px]",
-        },
-        {
-            to: "/shop/best-of-the-year",
-            label: "Best of the Year",
-            customClass: "md:translate-x-[60px]",
-        },
-        {
-            to: "/shop/last-30-days",
-            label: "Last 30 Days",
-            customClass: "md:-translate-x-[20px]",
-        },
-    ];
-
     return (
         <motion.ul
             className="flex ms-6 md:ms-0 flex-col justify-center items-stretch gap-4 md:gap-12 origin-left"
