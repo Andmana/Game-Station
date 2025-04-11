@@ -14,7 +14,7 @@ import { mockGetTopGamesByGenre } from "../../services/api/MockServices";
 import { getTopGamesByGenre } from "../../services/api/AllServices";
 
 const ThirdContent = () => {
-    const useMock = true;
+    const useMock = false;
     const { data, error, isLoading } = useQuery<
         { name: string; games: IGame[] }[],
         Error
