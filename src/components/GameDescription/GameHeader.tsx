@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CButton from "../common/CButton";
 import { IGame } from "../../types/IGame";
 
-const GameHeader = ({ data }: { data: IGame }) => {
+const GameHeader = ({ data }: { data?: IGame }) => {
     const navigate = useNavigate();
     return (
         <div className="flex justify-between items-center text-4xl font-black">
@@ -15,7 +15,7 @@ const GameHeader = ({ data }: { data: IGame }) => {
             >
                 Back
             </CButton>
-            <div className="flex-1 text-end">{data.name}</div>
+            {data && <div className="flex-1 text-end">{data.name}</div>}
         </div>
     );
 };
