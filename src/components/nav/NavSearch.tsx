@@ -7,7 +7,7 @@ import { getMultipleGames } from "../../services/api/AllServices";
 import { useQuery } from "@tanstack/react-query";
 import ErrorPage from "../../pages/ErrorPage";
 import Loading from "../common/Loading";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const fetchGames = async (search: string) => {
     const queryParams = {
