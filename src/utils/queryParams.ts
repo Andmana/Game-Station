@@ -9,9 +9,7 @@ import {
 
 const date = new Date();
 const prevYear = date.getFullYear() - 1;
-const dateIsoString2010 = `
-    ${get2010StartDateIsoString},${getCurrentDateIsoString()}
-    `;
+const dateIsoString2010 = `${get2010StartDateIsoString()},${getCurrentDateIsoString()}`;
 
 export const queryConfig: Record<string, IQueryParams> = {
     default: {
