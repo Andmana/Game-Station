@@ -42,9 +42,9 @@ const Nav = ({ handleCartState }: NavProps) => {
             }}
             style={{
                 backgroundColor:
-                    window.location.pathname === "/shop"
-                        ? "#242424"
-                        : "transparent",
+                    window.location.pathname === "/"
+                        ? "transparent"
+                        : "#242424",
             }}
             className="fixed z-10 isolate w-full top-0 left-0 main-padding nav-shadow flex justify-between items-center gap-2.5"
         >
