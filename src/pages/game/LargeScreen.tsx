@@ -8,7 +8,7 @@ import { IGame } from "../../types/IGame";
 
 const LargeScreen = ({ data }: { data: IGame }) => {
     return (
-        <CSection customClass="main-padding !pt-[65px] gap-6 flex flex-col overflow-y-hidden">
+        <CSection customClass="main-padding !pt-[100px] gap-6 flex flex-col overflow-y-hidden">
             <GameHeader data={data} />
             <div className="flex-1 flex gap-4 overflow-y-hidden">
                 <div className="flex-2/3 rounded-xl overflow-hidden">

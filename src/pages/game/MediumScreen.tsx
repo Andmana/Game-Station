@@ -10,7 +10,7 @@ const MediumScreen = ({ data }: { data: IGame }) => {
         <section className="w-fulloverflow-hidden" style={{ marginTop: 65 }}>
             <div
                 style={{
-                    height: "calc(100vh - 65px)",
+                    height: "calc(100vh - 85px)",
                 }}
                 className="flex flex-col justify-between gap-4  main-padding !pt-0 "
             >

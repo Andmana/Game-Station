@@ -9,7 +9,7 @@ const GameHeader = ({ data }: { data?: IGame }) => {
         <div className="flex justify-between items-center text-4xl font-black">
             <CButton
                 onClick={() => {
-                    navigate(-1);
+                    navigate("/shop");
                 }}
                 customClass="!text-3xl !font-bold"
             >
