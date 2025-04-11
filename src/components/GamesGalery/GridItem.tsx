@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../App";
 
 import iconCheck from "../../assets/images/icon-check.svg";
+import { formatStringToReadableDate } from "../../utils/formatDate";
 
 const GridItem = ({
     game,
@@ -88,11 +89,22 @@ const GridItem = ({
                         </div>
                     </div>
                     <div className="px-4 pb-8 flex flex-col gap-2">
+                        {game.released && (
+                            <>
+                                <ItemDetail
+                                    label="Released"
+                                    values={formatStringToReadableDate(
+                                        game.released
+                                    )}
+                                />
+                                <span className="w-full h-0.5 mt-0.5 bg-neutral-50"></span>
+                            </>
+                        )}
                         {game.contentRating && (
                             <>
                                 <ItemDetail
                                     label="Rating"
-                                    values={game.contentRating?.name}
+                                    values={game.contentRating.name}
                                 />
                                 <span className="w-full h-0.5 mt-0.5 bg-neutral-50"></span>
                             </>
