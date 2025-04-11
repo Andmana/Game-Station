@@ -3,15 +3,15 @@ import { getGameById } from "../../services/api/AllServices";
 import { IGame } from "../../types/IGame";
 import CSection from "../../components/common/CSection";
 import MediaQuery from "react-responsive";
-import GameAbout from "./GameAbout";
 import CButton from "../../components/common/CButton";
-import GameDetail from "./GameDetail";
 import CarouselV2 from "../../components/carousel/CarouselV2";
 import Loading from "../../components/common/Loading";
 import ErrorPage from "../ErrorPage";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../App";
+import GameDetail from "../../components/GameDescription/GameDetail";
+import GameAbout from "../../components/GameDescription/GameAbout";
 
 const Game = () => {
     const id = useLoaderData() as string;

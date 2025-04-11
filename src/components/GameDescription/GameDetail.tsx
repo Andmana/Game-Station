@@ -55,7 +55,9 @@ const GameDetail = ({ game }: { game: IGame }) => {
                         "Publisher",
                         game.publishers.map((publisher) => publisher.name)
                     )}
-                {game.website && <p>Website: {game.website}</p>}
+                {game.website && (
+                    <a href={game.website}>Website: {game.website}</a>
+                )}
             </motion.div>
 
             <motion.button
