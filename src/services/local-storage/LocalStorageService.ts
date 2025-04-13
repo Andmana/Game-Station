@@ -1,11 +1,11 @@
 import { ILocalStorage } from "../../types/ILocalStorage";
-import { dummyGames } from "../../utils/dummy";
+import { dummyGamesNier } from "../../utils/dummy";
 
 // Function to fetch game data from localStorage
 export const getFromLocalStorage = (): ILocalStorage => {
     const storedData = localStorage.getItem("myGameStation");
 
-    if (!storedData) return { gamePrices: [], cartItems: [...dummyGames] };
+    if (!storedData) return { gamePrices: [], cartItems: [...dummyGamesNier] };
     // Return parsed data if available, otherwise return null
     return JSON.parse(storedData);
 };
