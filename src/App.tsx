@@ -70,7 +70,10 @@ function App() {
                     id="app"
                     className="bg-dark relative min-h-screen text-white flex flex-col"
                 >
-                    <Nav handleCartState={handleCartState} />
+                    <Nav
+                        handleCartState={handleCartState}
+                        cartItems={cartItems}
+                    />
                     <main className="min-h-screen relative">
                         <Outlet />
                     </main>

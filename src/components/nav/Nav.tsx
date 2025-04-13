@@ -3,16 +3,18 @@ import { useState } from "react";
 
 import CLink from "../common/CLink";
 import CButton from "../common/CButton";
+import NavSearch from "./NavSearch";
 
 import logoImg from "../../assets/images/logo.png";
 import iconCart from "../../assets/images/icon-cart.svg";
-import NavSearch from "./NavSearch";
+import { IGame } from "../../types/IGame";
 
 interface NavProps {
     handleCartState: () => void;
+    cartItems: IGame[];
 }
 
-const Nav = ({ handleCartState }: NavProps) => {
+const Nav = ({ handleCartState, cartItems }: NavProps) => {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
     const [prevScroll, setPrevScroll] = useState(0);
@@ -66,13 +68,18 @@ const Nav = ({ handleCartState }: NavProps) => {
 
             {/* Cart */}
 
-            <CButton>
+            <CButton customClass="relative">
                 <img
                     className="w-8 h-8"
                     src={iconCart}
                     alt="submit search"
                     onClick={handleCartState}
                 />
+                {cartItems.length > 0 && (
+                    <span className="absolute top-0 right-0 w-4 h-4 p-0.5 flex justify-center items-center bg-[#fff] text-black rounded-full translate-x-1/2 text-xs">
+                        {cartItems.length}
+                    </span>
+                )}
             </CButton>
         </motion.nav>
     );
