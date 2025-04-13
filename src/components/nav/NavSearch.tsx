@@ -88,7 +88,7 @@ const NavSearch = () => {
                     {/* Transition exit */}
                     {isFocused && (
                         <motion.div
-                            className="absolute top-full w-[90vw] left-1/2 md:w-full min-h-30 rounded-2xl bg-[#171717] overflow-hidden origin-top transform translate-y-4 -translate-x-1/2"
+                            className="absolute top-full w-[90vw] left-1/2 md:w-full rounded-2xl bg-[#171717] overflow-hidden origin-top transform translate-y-4 -translate-x-1/2"
                             initial={{ scaleY: 0 }}
                             animate={{ scaleY: 1 }}
                             exit={{ scaleY: 0 }}
