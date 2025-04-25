@@ -1,6 +1,6 @@
 # Game-Station
 
-<img src="./public/Game-Station-01.png" width="500">
+<img src="./public/Game-Station-01.png" width="full">
 
 ### [Live Demo](https://game-station-xxx.netlify.app/)
 
